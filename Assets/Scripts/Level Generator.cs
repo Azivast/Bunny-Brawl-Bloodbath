@@ -7,15 +7,18 @@ using Random = System.Random;
 // drunkard walk algorithm
 public class LevelGenerator : MonoBehaviour {
     [SerializeField] private int iterations = 100;
-    [SerializeField] private int chanceOf2x2Room = 50;
-    [SerializeField] private int chanceOf3x3Room = 11;
+    [SerializeField] private float chanceOf2x2Room = 50;
+    [SerializeField] private float chanceOf3x3Room = 11;
+    [SerializeField] private float chanceOfNewFloorMaker = 1;
+    [SerializeField] private float chanceOfFloorMakerDeath = 1;
+    [SerializeField] private float chanceOfFloorMakerDeathIncrease = 1;
     [SerializeField] private Vector2 levelSizeWorldUnits = new Vector2(30, 30);
     [SerializeField] private float worldUnitsPerGridCell = 1;
 
     enum tileSet {
         empty,
         floor,
-        walll
+        wall
     };
     private tileSet[,] grid;
     private int levelWidth, levelHeight;
@@ -29,9 +32,9 @@ public class LevelGenerator : MonoBehaviour {
 
     private void Start() {
         Setup();
-        GenerateFloors(iterations);
-        GenerateWalls();
-        SpawnLevel();
+        GenerateFloors(iterations, chanceOf2x2Room, chanceOf3x3Room);
+        //GenerateWalls();
+        //SpawnLevel();
     }
     
     private Vector2 RandomDirection() {
@@ -77,23 +80,19 @@ public class LevelGenerator : MonoBehaviour {
         floorMakers = new List<FloorMaker>();
     }
 
-    private void GenerateFloors(int iterations, int chance2x2, int chance3x3) {
+    private void GenerateFloors(int iterations, float chance2x2, float chance3x3) {
         // Spawn an initial floorMaker
-        FloorMaker initialMaker = new FloorMaker();
-        initialMaker.Dir = RandomDirection();
-        initialMaker.Pos = new Vector2(levelWidth / 2, levelHeight / 2);
-        floorMakers.Add(initialMaker);
-        
-        
+        SpawnFloorMaker(new Vector2(levelWidth / 2, levelHeight / 2));
+
         int currentIteration = 0;
         do {
             for (int i = floorMakers.Count; i > 0; i--) {
                 var floorMaker = floorMakers[i];
                 
-                // Spawn floor
+                // STEP 1: Spawn floor
                 grid[(int)floorMaker.Pos.x, (int)floorMaker.Pos.y] = tileSet.floor;
 
-                // Chance of ...
+                // STEP 2: Make rooms
                 //TODO: Improve code
                 int rand = random.Next(0, 100);
                 if (rand < chance2x2) { 
@@ -114,14 +113,36 @@ public class LevelGenerator : MonoBehaviour {
                     grid[(int)floorMaker.Pos.x, (int)floorMaker.Pos.y+2] = tileSet.floor;
                 }
                 
-                // Continue here
+                // STEP 3: Split corridors
+                rand = random.Next(0, 100);
+                if (rand < chanceOfNewFloorMaker)
+                {
+                    SpawnFloorMaker(floorMaker.Pos);
+                    chanceOfFloorMakerDeath += chanceOfFloorMakerDeathIncrease;
+                }
+                // chance of death
+                rand = random.Next(0, 100);
+                if (floorMakers.Count > 1 && rand < chanceOfFloorMakerDeath)
+                {
+                    floorMakers.Remove(floorMaker);
+                }
+                
                 
                 // Move floorMaker
                 floorMaker.Pos += floorMaker.Dir; //TODO: Validate whether inside grid or not 
                 floorMaker.Dir = RandomDirection();
                 floorMakers[i] = floorMaker;
-            }
+            } 
         } while (currentIteration++ < iterations);
-
     }
+    
+    
+    private void SpawnFloorMaker(Vector2 pos)
+    {
+        FloorMaker maker = new FloorMaker();
+        maker.Pos = pos;
+        maker.Dir = RandomDirection();
+
+        floorMakers.Add(maker);
+    } 
 }
