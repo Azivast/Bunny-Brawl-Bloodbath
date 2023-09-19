@@ -10,6 +10,7 @@ using Random = System.Random;
 public class LevelGenerator : MonoBehaviour {
     [SerializeField] private Tilemap tileMap;
     [SerializeField] private Tile floorTile;
+    [SerializeField] private Tile wallTile;
     [SerializeField] private int iterations = 10;
     [SerializeField] private float chanceOf2x2Room = 50;
     [SerializeField] private float chanceOf3x3Room = 11;
@@ -42,7 +43,7 @@ public class LevelGenerator : MonoBehaviour {
         random = new Random();
         Setup();
         GenerateFloors(iterations, chanceOf2x2Room, chanceOf3x3Room);
-        //GenerateWalls();
+        GenerateWalls();
         SpawnLevel();
     }
     
@@ -69,25 +70,29 @@ public class LevelGenerator : MonoBehaviour {
         }
         return direction;
     }
-    
-    private bool TryGetTilePosition(out Vector2Int newTilePosition, Vector2Int currentTilePos, Vector2Int offset) {
-        Vector2Int temp = currentTilePos + offset;
-        if (TryGetTilePosition(out temp, currentTilePos)) {
-            newTilePosition = temp;
-            return true;
-        }
-        else {
-            newTilePosition = currentTilePos;
-            return false;
-        }
-    }
-    private bool TryGetTilePosition(out Vector2Int newTilePosition, Vector2Int currentTilePos) {
+
+    private bool TryGetFloorPosition(out Vector2Int newTilePosition, Vector2Int currentTilePos) {
         // If requested tile is outside grid
         if (   
             currentTilePos.x > levelWidth-1 // -1 is padding in order to allow walls on outer edge of grid
             || currentTilePos.x < 1
             || currentTilePos.y > levelHeight-1
             || currentTilePos.y < 1   
+        ) {
+            newTilePosition = currentTilePos;
+            return false;
+        }
+
+        newTilePosition = currentTilePos;
+        return true;
+    }
+    private bool TryGetTilePosition(out Vector2Int newTilePosition, Vector2Int currentTilePos) {
+        // If requested tile is outside grid
+        if (   
+            currentTilePos.x > levelWidth // -1 is padding in order to allow walls on outer edge of grid
+            || currentTilePos.x < 0
+            || currentTilePos.y > levelHeight
+            || currentTilePos.y < 0
         ) {
             newTilePosition = currentTilePos;
             return false;
@@ -124,7 +129,7 @@ public class LevelGenerator : MonoBehaviour {
                 int rand;
                 
                 // STEP 1: Spawn floor
-                if (TryGetTilePosition(out newPos, floorMaker.Pos)) {
+                if (TryGetFloorPosition(out newPos, floorMaker.Pos)) {
                     grid[newPos.x, newPos.y] = tileSet.floor;
                 }
 
@@ -160,7 +165,7 @@ public class LevelGenerator : MonoBehaviour {
                 }
                 
                 // Move floorMaker
-                if (TryGetTilePosition(out _, floorMaker.Pos + floorMaker.Dir)) {
+                if (TryGetFloorPosition(out _, floorMaker.Pos + floorMaker.Dir)) {
                     floorMaker.Pos += floorMaker.Dir;
                     floorMaker.Dir = RandomDirection();
                     floorMakers[i] = floorMaker;
@@ -176,14 +181,34 @@ public class LevelGenerator : MonoBehaviour {
         } while (currentIteration++ < iterations);
     }
 
+    private void GenerateWalls() { //TODO: Optimize
+        for (int i = 0; i < levelWidth; i++) {
+            for (int j = 0; j < levelHeight; j++) {
+                if (grid[i, j] == tileSet.empty) {
+                    // Vector2Int result = Vector2Int.zero;
+                    // if ((TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.up) && grid[result.x, result.y] == tileSet.floor)
+                    //     || (TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.down) && grid[result.x, result.y] == tileSet.floor)
+                    //     || (TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.left) && grid[result.x, result.y] == tileSet.floor)
+                    //     || (TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.right) && grid[result.x, result.y] == tileSet.floor)) {
+                    //     grid[i, j] = tileSet.wall;
+                    // }
+                    grid[i, j] = tileSet.wall;
+                }
+            } 
+        }
+    }
+
     private void SpawnLevel() {
         tileMap.ClearAllTiles();
-        //tileMap.size = new Vector3Int(levelWidth, levelHeight);
+        //tileMap.size = new Vector3Int(levelWidth, levelHeight); //TODO: Does this not work?? Lag? needed?
 
         for (int i = 0; i < levelWidth; i++) {
             for (int j = 0; j < levelHeight; j++) {
                 if (grid[i, j] is tileSet.floor) {
                     tileMap.SetTile(new Vector3Int(i, j, 0), floorTile);
+                }
+                else if (grid[i, j] is tileSet.wall) {
+                    tileMap.SetTile(new Vector3Int(i, j, 0), wallTile);
                 }
             } 
         }

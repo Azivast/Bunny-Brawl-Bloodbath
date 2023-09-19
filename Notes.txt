@@ -1,4 +1,11 @@
 Procedural Generation of Nuclear Throne: https://www.youtube.com/watch?v=I74I_MhZIK8
 https://web.archive.org/web/20160404170856/http://www.vlambeer.com/2013/04/02/random-level-generation-in-wasteland-kings/
 
-tile map textures: https://opengameart.org/content/the-field-of-the-floating-islands
+tile map textures cc0: https://opengameart.org/content/the-field-of-the-floating-islands
+
+gameplay: https://www.youtube.com/watch?v=n3IvM0f2Lvw
+
+
+things to look at:
+https://www.youtube.com/watch?v=C949ILsyywg
+https://www.youtube.com/watch?v=etI-2dHeufc
