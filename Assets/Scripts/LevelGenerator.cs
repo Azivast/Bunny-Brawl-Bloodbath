@@ -8,7 +8,7 @@ using Random = System.Random;
 // drunkard walk algorithm
 [ExecuteAlways]
 public class LevelGenerator : MonoBehaviour {
-    [SerializeField] private Tilemap tileMap;
+    [SerializeField] private Tilemap floorTileMap, wallTileMap;
     [SerializeField] private Tile floorTile;
     [SerializeField] private Tile wallTile;
     [SerializeField] private int iterations = 10;
@@ -199,16 +199,17 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     private void SpawnLevel() {
-        tileMap.ClearAllTiles();
+        floorTileMap.ClearAllTiles();
+        wallTileMap.ClearAllTiles();
         //tileMap.size = new Vector3Int(levelWidth, levelHeight); //TODO: Does this not work?? Lag? needed?
 
         for (int i = 0; i < levelWidth; i++) {
             for (int j = 0; j < levelHeight; j++) {
                 if (grid[i, j] is tileSet.floor) {
-                    tileMap.SetTile(new Vector3Int(i, j, 0), floorTile);
+                    floorTileMap.SetTile(new Vector3Int(i, j, 0), floorTile);
                 }
                 else if (grid[i, j] is tileSet.wall) {
-                    tileMap.SetTile(new Vector3Int(i, j, 0), wallTile);
+                    wallTileMap.SetTile(new Vector3Int(i, j, 0), wallTile);
                 }
             } 
         }
