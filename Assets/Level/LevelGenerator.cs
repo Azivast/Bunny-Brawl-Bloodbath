@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour {
     [SerializeField] private Tilemap floorTileMap, wallTileMap;
     [SerializeField] private Tile floorTile;
     [SerializeField] private Tile wallTile;
+    [SerializeField] private int seed = 1234567;
     [SerializeField] private int iterations = 10;
     [SerializeField] private float chanceOf2x2Room = 50;
     [SerializeField] private float chanceOf3x3Room = 11;
@@ -27,7 +28,7 @@ public class LevelGenerator : MonoBehaviour {
     private tileSet[,] grid;
 
     private List<FloorMaker> floorMakers;
-    private Random random = new Random();
+    private Random random;
     private float chanceOfFloorMakerDeathInternal;
 
     struct FloorMaker {
@@ -40,7 +41,7 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     private void Start() {
-        random = new Random();
+        random = new Random(seed);
         Setup();
         GenerateFloors(iterations, chanceOf2x2Room, chanceOf3x3Room);
         GenerateWalls();

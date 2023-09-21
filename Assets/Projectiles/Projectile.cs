@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour {
         rb.velocity = transform.right * speed;
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        Destroy(this);
+    private void OnCollisionEnter2D(Collision2D col) {
+        Destroy(gameObject);
     }
 }

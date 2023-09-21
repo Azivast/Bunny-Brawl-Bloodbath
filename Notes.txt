@@ -1,7 +1,9 @@
 Procedural Generation of Nuclear Throne: https://www.youtube.com/watch?v=I74I_MhZIK8
-https://web.archive.org/web/20160404170856/http://www.vlambeer.com/2013/04/02/random-level-generation-in-wasteland-kings/
-
+Procedural Generation: https://web.archive.org/web/20160404170856/http://www.vlambeer.com/2013/04/02/random-level-generation-in-wasteland-kings/
+Target camera: https://stackoverflow.com/questions/68530495/unity-make-character-look-at-mouse-with-new-input-system-character-controller
+Modular code workflow: https://www.youtube.com/watch?v=nk3gHIZZ5Rg
 tile map textures cc0: https://opengameart.org/content/the-field-of-the-floating-islands
+Unite Austin 2017 - Game Architecture with Scriptable Objects: https://www.youtube.com/watch?v=raQ3iHhE_Kk
 
 gameplay: https://www.youtube.com/watch?v=n3IvM0f2Lvw
 
