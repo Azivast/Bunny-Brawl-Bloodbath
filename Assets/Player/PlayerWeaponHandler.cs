@@ -8,8 +8,8 @@ public class PlayerWeaponHandler : MonoBehaviour {
     //[SerializeField] private GameObject[] weapons;
     [SerializeField] private Transform weaponPosition;
     [SerializeField] private GameObject activeWeapon;
-    [SerializeField] private Camera camera;
-    [SerializeField] private InputActionReference fire, look;
+    [SerializeField] private CameraController camera;
+    [SerializeField] private InputActionReference fire;
     
     private WeaponBehaviour activeWeaponBehaviour;
 
@@ -20,23 +20,16 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
     private void OnEnable() {
         fire.action.Enable(); // TODO: is this needed?
-        look.action.Enable();
         fire.action.performed += Fire;
     }
     
     private void OnDisable() {
         fire.action.Disable(); // TODO: is this needed?
-        look.action.Disable();
         fire.action.performed -= Fire;
     }
 
     private void Aim() {
-        var mousePosition = look.action.ReadValue<Vector2>();
-        var mousePositionZ = camera.farClipPlane * .5f;
-
-        var mouseWorldPosition = camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, mousePositionZ));
-
-        activeWeaponBehaviour.target = mouseWorldPosition;
+        activeWeaponBehaviour.target = camera.MouseWorldPosition();
     }
 
     private void Update() {
