@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TargetBehaviour))]
 public class EnemyBehaviour : MonoBehaviour {
-    [SerializeField] private int maxhealth = 10;
-    [SerializeField] private TargetBehaviour target;
-
+    public TargetBehaviour Target;
     private Rigidbody2D rigidBody;
-    private int currentHealth;
 
-    private void Start() {
-        currentHealth = maxhealth;
+    private void OnValidate() {
+        if (Target is null)
+            Debug.LogError("Target cannot be null");
     }
 }

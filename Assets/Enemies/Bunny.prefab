@@ -9,8 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468719331699266387}
-  - component: {fileID: 4661356882194527003}
-  - component: {fileID: 2351572557322495888}
+  - component: {fileID: 5204361976371454222}
+  - component: {fileID: 3374050131357871134}
+  - component: {fileID: 5598010578160338962}
+  - component: {fileID: 3350798044463244803}
+  - component: {fileID: 8657434626488876039}
   - component: {fileID: 468719331699266385}
   - component: {fileID: 468719331699266383}
   - component: {fileID: 468719331699266382}
@@ -37,7 +40,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4661356882194527003
+--- !u!114 &5204361976371454222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1e930a9be0de143a04eb90111a27fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3374050131357871134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,9 +64,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9208e07da9c7d9149bddaeb9f2d1a501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 10
-  target: {fileID: 0}
---- !u!114 &2351572557322495888
+  Target: {fileID: 5204361976371454222}
+--- !u!114 &5598010578160338962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899621e6f9b3d2b459813de415c49a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBehaviour: {fileID: 3374050131357871134}
+  maxHealth: 1
+  currentHealth: 0
+  OnKilled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3350798044463244803}
+        m_TargetAssemblyTypeName: EnemyWeaponHandler, Assembly-CSharp
+        m_MethodName: OnKill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3350798044463244803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,6 +107,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e48ab4b67cf3a43b84782de7362a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 7837799596735370733, guid: cbc7d20c75e6efc4496b849ebccf1483, type: 3}
+  weaponPosition: {fileID: 35771812137876262}
+--- !u!114 &8657434626488876039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9217c53299be0b04daa6fbb1221cf93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  chanceOfNewDir: 1
 --- !u!212 &468719331699266385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b1cc167a538cece439e4f424223a4fdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

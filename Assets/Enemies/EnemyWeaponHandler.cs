@@ -15,8 +15,16 @@ public class EnemyWeaponHandler : MonoBehaviour
         activeWeaponBehaviour = weapon.GetComponent<WeaponBehaviour>();
     }
 
-
     private void Aim() {
-        activeWeaponBehaviour.target = mouseWorldPosition;
+        //activeWeaponBehaviour.target = mouseWorldPosition;
+    }
+
+    public void OnKill() {
+        DropWeapon();
+    }
+    
+    
+    private void DropWeapon() {
+        weapon.transform.parent = null;
     }
 }

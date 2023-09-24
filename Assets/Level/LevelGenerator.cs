@@ -37,7 +37,7 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     private void OnValidate() {
-        Start();
+        //TODO: validate
     }
 
     private void Start() {

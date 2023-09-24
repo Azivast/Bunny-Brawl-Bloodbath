@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehaviour : MonoBehaviour {
-    [SerializeField] private InputActionReference move, look;
+    [SerializeField] private InputActionReference move, interract;
     [SerializeField] private int speed;
     private Rigidbody2D rigidbody;
     private Vector2 velocity;
@@ -14,21 +14,6 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnEnable() {
-        move.action.Enable();
-        //move.action.performed += OnMove;
-    }
-    
-    private void OnDisable() {
-        move.action.Disable();
-        //move.action.performed -= OnMove;
-    }
-
-    private void OnMove(InputAction.CallbackContext context) {
-        Debug.Log("Moved");
-        // rigidbody.velocity = context.ReadValue<Vector2>() * speed;
     }
 
     private void FixedUpdate() {
