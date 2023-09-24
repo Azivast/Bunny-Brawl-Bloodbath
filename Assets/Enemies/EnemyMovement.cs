@@ -22,8 +22,7 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-
-        if (rand.NextDouble() > chanceOfNewDir) {
+        if (rand.Next(10000)/10f > chanceOfNewDir) {
             MoveRandom();
         }
     }

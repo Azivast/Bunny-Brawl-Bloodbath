@@ -18,13 +18,4 @@ public class EnemyWeaponHandler : MonoBehaviour
     private void Aim() {
         //activeWeaponBehaviour.target = mouseWorldPosition;
     }
-
-    public void OnKill() {
-        DropWeapon();
-    }
-    
-    
-    private void DropWeapon() {
-        weapon.transform.parent = null;
-    }
 }
