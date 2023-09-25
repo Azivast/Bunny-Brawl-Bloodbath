@@ -50,7 +50,7 @@ MonoBehaviour:
   look: {fileID: 2521783128531987132, guid: d1883ee3fa76a554a966a328da270392, type: 3}
   crosshairTexture: {fileID: 2800000, guid: a60d104137626104ea460e90b3e8f9c0, type: 3}
   cameraDistance: 2
-  smoothTime: 0.2
+  smoothTime: 0.5
 --- !u!20 &8760444375811259933
 Camera:
   m_ObjectHideFlags: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 25
-  m_RefResolutionX: 320
-  m_RefResolutionY: 240
+  m_RefResolutionX: 200
+  m_RefResolutionY: 150
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 1
