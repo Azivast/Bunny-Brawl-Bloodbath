@@ -1,15 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 using Random = System.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovement : MonoBehaviour {
     [SerializeField] private float speed = 1;
-    [SerializeField] private float chanceOfNewDir = 0.1f;
+    [SerializeField] private int chanceOfNewDir = 50;
+    [SerializeField] private float newMoveTime = 2;
     private Rigidbody2D rb;
     private Random rand;
+    private float moveTimer;
+
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -22,8 +26,14 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (rand.Next(10000)/10f > chanceOfNewDir) {
-            MoveRandom();
+        moveTimer -= Time.fixedDeltaTime;
+
+        if (moveTimer <= 0) {
+            if (rand.Next(100) > chanceOfNewDir) {
+                moveTimer = newMoveTime;
+                MoveRandom();
+            }
         }
+
     }
 }
