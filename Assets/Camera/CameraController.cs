@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 
     private void Start() {
         camera = GetComponent<Camera>();
-        playerTransform = GetComponentInParent<Transform>();
+        playerTransform = GetComponentInParent<PlayerBehaviour>().gameObject.GetComponent<Transform>();
 
         initialZ = transform.position.z;
         
@@ -45,12 +45,7 @@ public class CameraController : MonoBehaviour {
         var mousePosition = camera.ScreenToViewportPoint(look.action.ReadValue<Vector2>());
         mousePosition -= Vector3.one * 0.5f; // 0,0 as middle of screen
         mousePosition *= 2; // -1 to 1
-        
-        float max = 0.9f;
-        if (Mathf.Abs(mousePosition.x) > max || Mathf.Abs(mousePosition.y) > max){
-            mousePosition = mousePosition.normalized; //helps smooth near edges of screen
-        }
-        
+
         return mousePosition;
     }
     
@@ -60,7 +55,6 @@ public class CameraController : MonoBehaviour {
         target.z = initialZ;
 
         transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, smoothTime);
-
     }
     
     private void Update() {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d26d96106a5f08e46a9ec9160069e390
+guid: 168d3db5e0bdbf545a65ece42bb0d3fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tiles_packed_0
+      name: grass1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
-        width: 16
-        height: 16
+        x: 0
+        y: 103
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd13b332c435505469cada67f10c1541
-      internalID: 1232904161
+      spriteID: ad5869fc03b7a8542bb2c04d8a9b33a4
+      internalID: -586101056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_packed_1
+      name: water1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 31
-        width: 16
-        height: 16
+        x: 25
+        y: 103
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +164,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f967284efcdbbe74a943ba3fc64ce43d
-      internalID: 1550424786
+      spriteID: 0f1d7274543ac9d4dacf8e0a622d2e48
+      internalID: -721719798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 103
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc14b91317477844aa133d7bcc92564b
+      internalID: -1268850132
       vertices: []
       indices: 
       edges: []
@@ -181,8 +202,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      dirt1: -1268850132
+      grass1: -586101056
       tiles_packed_0: 1232904161
       tiles_packed_1: 1550424786
+      water1: -721719798
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

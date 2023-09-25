@@ -8,6 +8,8 @@ Wikipedia nuclear throne: https://en.wikipedia.org/wiki/Nuclear_Throne
 
 gameplay: https://www.youtube.com/watch?v=n3IvM0f2Lvw
 
+font: https://opengameart.org/content/minimalist-pixel-fonts
+
 
 things to look at:
 https://www.youtube.com/watch?v=C949ILsyywg
