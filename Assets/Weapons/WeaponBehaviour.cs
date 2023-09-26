@@ -9,20 +9,20 @@ using UnityEngine.UIElements;
 public class WeaponBehaviour : MonoBehaviour {
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform[] firingPositions;
-    [SerializeField] private int ammo = 100;
     [SerializeField] private float fireRate = 1;
     
-    public Vector3 target;
     private Quaternion rotation;
     private float fireTimer;
     private SpriteRenderer spriteRenderer;
+
+    public Vector3 Target { get; set; }
 
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
-        Vector2 direction = (target - transform.position).normalized;
+        Vector2 direction = (Target - transform.position).normalized;
         transform.rotation = Quaternion.FromToRotation(Vector3.right, direction);
         if (transform.rotation.z > -Mathf.Deg2Rad*45 && transform.rotation.z < Mathf.Deg2Rad*45) {
             spriteRenderer.flipY = false;
@@ -41,9 +41,7 @@ public class WeaponBehaviour : MonoBehaviour {
         if (!(fireTimer <= 0)) return;
         fireTimer = fireRate;
         foreach (Transform firingPosition in firingPositions) {
-            if (ammo <= 0) return;
             Instantiate(projectile, firingPosition.position, firingPosition.rotation);
-            ammo--;
         }
     }
 }

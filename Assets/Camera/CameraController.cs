@@ -11,14 +11,13 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private Texture2D crosshairTexture;
     [SerializeField] private float cameraDistance = 2f;
     [SerializeField] private float smoothTime = 0.2f;
+    [SerializeField] private Transform playerTransform;
     private Camera camera;
-    private Transform playerTransform;
     private float initialZ;
     private Vector3 currentVelocity;
 
     private void Start() {
         camera = GetComponent<Camera>();
-        playerTransform = GetComponentInParent<PlayerBehaviour>().gameObject.GetComponent<Transform>();
 
         initialZ = transform.position.z;
         

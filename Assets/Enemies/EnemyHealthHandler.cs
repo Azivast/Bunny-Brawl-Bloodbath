@@ -23,7 +23,7 @@ public class EnemyHealthHandler : MonoBehaviour {
         enemyBehaviour.Target.OnAttacked -= Hit;
     }
 
-    private void Hit(TargetBehaviour target, int damage) {
+    private void Hit(int damage) {
         currentHealth -= damage;
         if (currentHealth <= 0) {
             Kill();

@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class TargetBehaviour : MonoBehaviour
 {
-    public UnityAction<TargetBehaviour, int> OnAttacked = delegate{};
+    public UnityAction<int> OnAttacked = delegate{};
 
     public void Attack(int damage){
-        OnAttacked(this, damage);
+        OnAttacked(damage);
     }
 }

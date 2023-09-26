@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 06a46fc6ddeff8e4bb68c884bbe2a719
+guid: 922c567c2f54b6c4daa3da117b3358b0
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Minimal5x7
+  - KenPixel Mini
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

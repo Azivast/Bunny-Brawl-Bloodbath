@@ -29,7 +29,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void Aim() {
-        activeWeaponBehaviour.target = camera.MouseWorldPosition();
+        activeWeaponBehaviour.Target = camera.MouseWorldPosition();
     }
 
     private void Update() {
