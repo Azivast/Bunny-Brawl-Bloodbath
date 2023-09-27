@@ -10,17 +10,22 @@ public class AmmoType : ScriptableObject
     public UnityAction<int> OnAmountChance = delegate{};
     public UnityAction<int> OnAmountIncrease = delegate{};
 
-    public int Amount;
+    [SerializeField] private int ammoLeft;
     public Image icon;
 
+    public int GetAmmoLeft() {
+        return ammoLeft;
+    }
+    
+
     public void AddAmmo(int amount) {
-        Amount += amount;
-        OnAmountChance(Amount);
+        ammoLeft += amount;
+        OnAmountChance(ammoLeft);
         OnAmountIncrease(amount);
     }
     
     public void UseAmmo(int amount) {
-        Amount -= amount;
-        OnAmountChance(Amount);
+        ammoLeft -= amount;
+        OnAmountChance(ammoLeft);
     }
 }

@@ -8,8 +8,10 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(SpriteRenderer))]
 public class WeaponBehaviour : MonoBehaviour {
     [SerializeField] private GameObject projectile;
+    public AmmoType AmmoType;
     [SerializeField] private Transform[] firingPositions;
     [SerializeField] private float fireRate = 1;
+    public bool InfiniteAmmo = false;
     
     private Quaternion rotation;
     private float fireTimer;
@@ -39,6 +41,11 @@ public class WeaponBehaviour : MonoBehaviour {
 
     public void Shoot() {
         if (!(fireTimer <= 0)) return;
+        if (InfiniteAmmo == false) { //TODO: better if
+            if (AmmoType.GetAmmoLeft() < 1) return;
+            else AmmoType.UseAmmo(1);
+        }
+        
         fireTimer = fireRate;
         foreach (Transform firingPosition in firingPositions) {
             Instantiate(projectile, firingPosition.position, firingPosition.rotation);

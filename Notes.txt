@@ -5,9 +5,12 @@ Modular code workflow: https://www.youtube.com/watch?v=nk3gHIZZ5Rg
 tile map textures cc0: https://opengameart.org/content/the-field-of-the-floating-islands
 Unite Austin 2017 - Game Architecture with Scriptable Objects: https://www.youtube.com/watch?v=raQ3iHhE_Kk
 Wikipedia nuclear throne: https://en.wikipedia.org/wiki/Nuclear_Throne
-https://docs.unity3d.com/Manual/class-ScriptableObject.html
+Scriptable objects: https://docs.unity3d.com/Manual/class-ScriptableObject.html
+Unity Events: https://docs.unity3d.com/ScriptReference/Events.UnityEvent.html
 
 gameplay: https://www.youtube.com/watch?v=n3IvM0f2Lvw
+https://nuclear-throne.fandom.com/wiki/Pickups_and_Props
+
 
 font: https://opengameart.org/content/kenney-fonts
 

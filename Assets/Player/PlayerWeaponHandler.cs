@@ -5,17 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponHandler : MonoBehaviour {
-    //[SerializeField] private GameObject[] weapons;
+    [SerializeField] private EquippedWeaponsObject weapons;
     [SerializeField] private Transform weaponPosition;
-    [SerializeField] private GameObject activeWeapon;
     [SerializeField] private CameraController camera;
     [SerializeField] private InputActionReference fire;
-    
-    private WeaponBehaviour activeWeaponBehaviour;
 
     private void Start() {
-        activeWeapon = Instantiate(activeWeapon, weaponPosition);
-        activeWeaponBehaviour = activeWeapon.GetComponent<WeaponBehaviour>();
+        weaponPosition = Instantiate(activeWeapon, weaponPosition);
     }
 
     private void OnEnable() {
@@ -29,7 +25,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void Aim() {
-        activeWeaponBehaviour.Target = camera.MouseWorldPosition();
+        weapons.GetActiveWeaponBehavior().Target = camera.MouseWorldPosition();
     }
 
     private void Update() {
@@ -37,12 +33,10 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void ChangeWeapon(int index) {
-        // for (int i = 0; i < weapons.Length; i++) {
-        //     weapons[i].SetActive(false);
-        // }
+        weapons.SwitchWeapon();
     }
 
     private void Fire(InputAction.CallbackContext context) {
-        activeWeaponBehaviour.Shoot(); // TODO: Use events and reduce coupling!
+        weapons.GetActiveWeaponBehavior().Shoot(); // TODO: Use events and reduce coupling!
     }
 }

@@ -15,6 +15,7 @@ public class EnemyWeaponHandler : MonoBehaviour
     private void Start() {
         weapon = Instantiate(weapon, weaponPosition);
         weaponBehaviour = weapon.GetComponent<WeaponBehaviour>();
+        weaponBehaviour.InfiniteAmmo = true;
     }
 
     private bool TryFindTarget(out TargetBehaviour target) {
