@@ -52,9 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 6361950364791684682, guid: d1883ee3fa76a554a966a328da270392, type: 3}
-  interract: {fileID: 0}
+  interact: {fileID: 8419221548602724490, guid: d1883ee3fa76a554a966a328da270392, type: 3}
   speed: 5
   health: {fileID: 11400000, guid: dd44c56797810044b9bffd9d29b0b143, type: 2}
+  interactHandler: {fileID: 11400000, guid: b9938babe2b05574d8e69513432102d3, type: 2}
 --- !u!114 &5977862962430158726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579f1adb1954aaf49a1814b82e1e8291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons: {fileID: 11400000, guid: 76045441a5bb6b240b29c6b6c9c2fa0a, type: 2}
   weaponPosition: {fileID: 35771812137876262}
-  activeWeapon: {fileID: 7837799596735370733, guid: cbc7d20c75e6efc4496b849ebccf1483, type: 3}
   camera: {fileID: 0}
   fire: {fileID: -621631156938017560, guid: d1883ee3fa76a554a966a328da270392, type: 3}
 --- !u!114 &3449549980980382734

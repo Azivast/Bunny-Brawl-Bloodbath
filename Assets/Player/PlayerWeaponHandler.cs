@@ -11,7 +11,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     [SerializeField] private InputActionReference fire;
 
     private void Start() {
-        weaponPosition = Instantiate(activeWeapon, weaponPosition);
+        //weapons.EquipNewWeapon(Instantiate(weapons.GetActiveWeapon(), weaponPosition)); // TODO: aaahhh fix
     }
 
     private void OnEnable() {

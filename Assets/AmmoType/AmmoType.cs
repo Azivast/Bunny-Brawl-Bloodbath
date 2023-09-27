@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "AmmoType", menuName = "AmmoType")]
+[CreateAssetMenu(fileName = "AmmoType", menuName = "Bunny Brawl Bloodbath/AmmoType")]
 public class AmmoType : ScriptableObject
 {
     public UnityAction<int> OnAmountChance = delegate{};

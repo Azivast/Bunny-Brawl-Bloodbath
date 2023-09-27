@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-[CreateAssetMenu(fileName = "PlayerHealth", menuName = "PlayerHealthObject")]
+[CreateAssetMenu(fileName = "PlayerHealth", menuName = "Bunny Brawl Bloodbath/PlayerHealthObject")]
 public class PlayerHealthObject : ScriptableObject
 {
     public int MaxHealth = 3;

@@ -4,23 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(EnemyBehaviour))]
+[RequireComponent(typeof(TargetBehaviour))]
 public class EnemyHealthHandler : MonoBehaviour {
-    [SerializeField]private EnemyBehaviour enemyBehaviour;
     [SerializeField] private int maxHealth = 1;
     [SerializeField] private int currentHealth;
     public UnityEvent OnKilled = new UnityEvent();
-    void Start() {
-        enemyBehaviour = GetComponent<EnemyBehaviour>();
+    private TargetBehaviour target;
+    
+    void Awake() {
+        target = GetComponent<TargetBehaviour>();
         currentHealth = maxHealth;
     }
 
     private void OnEnable() {
-        enemyBehaviour.Target.OnAttacked += Hit;
+        target.OnAttacked += Hit;
     }
 
     private void OnDisable() {
-        enemyBehaviour.Target.OnAttacked -= Hit;
+        target.OnAttacked -= Hit;
     }
 
     private void Hit(int damage) {
@@ -31,8 +32,8 @@ public class EnemyHealthHandler : MonoBehaviour {
     }
     
     private void Kill() {
-        Destroy(gameObject);
         OnKilled.Invoke();
+        Destroy(gameObject);
     }
     
 }

@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EquippedWeapons", menuName = "EquippedWeaponsObject")]
+[CreateAssetMenu(fileName = "EquippedWeapons", menuName = "Bunny Brawl Bloodbath/EquippedWeaponsObject")]
 public class EquippedWeaponsObject : ScriptableObject
 {
     [SerializeField] private GameObject[] weapons = new GameObject[2];
+    private GameObject activeWeapon;
     private int activeWeaponIndex = 0;
     private WeaponBehaviour activeWeaponBehaviour;
 
-    private void Awake() {
+    private void OnEnable() {
         activeWeaponBehaviour = weapons[activeWeaponIndex].GetComponent<WeaponBehaviour>();
     }
 
@@ -24,7 +25,9 @@ public class EquippedWeaponsObject : ScriptableObject
     
     public void SwitchWeapon() {
         activeWeaponIndex++;
-        if (activeWeaponIndex > weapons.Length-1) activeWeaponIndex = 0;
+        if (activeWeaponIndex > weapons.Length-1) {
+            activeWeaponIndex = 0;
+        }
         activeWeaponBehaviour = weapons[activeWeaponIndex].GetComponent<WeaponBehaviour>();
     }
     

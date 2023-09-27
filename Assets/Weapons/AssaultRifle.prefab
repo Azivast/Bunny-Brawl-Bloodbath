@@ -78,10 +78,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 8390488424815572418, guid: 297e8a5342126f140b163fd6e514c947, type: 3}
-  ammoType: {fileID: 11400000, guid: 53abfb4852c578d469f19ab4fc1da2c3, type: 2}
+  AmmoType: {fileID: 11400000, guid: 53abfb4852c578d469f19ab4fc1da2c3, type: 2}
   firingPositions:
   - {fileID: 8887809741613362626}
   fireRate: 0.1
+  InfiniteAmmo: 0
 --- !u!212 &4236152462785639087
 SpriteRenderer:
   m_ObjectHideFlags: 0
