@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
@@ -9,21 +12,26 @@ using Random = System.Random;
 [ExecuteAlways]
 public class LevelGenerator : MonoBehaviour {
     [SerializeField] private Tilemap floorTileMap, wallTileMap;
-    [SerializeField] private readonly Tile floorTile;
-    [SerializeField] private readonly Tile wallTile;
+    [SerializeField] private Tile floorTile;
+    [SerializeField] private Tile wallTile;
+    [SerializeField] private Tile borderTile;
     [SerializeField] private int seed = 1234567;
-    [SerializeField] private int iterations = 10;
+    [SerializeField] private int MaxFloors = 110;
     [SerializeField] private float chanceOf2x2Room = 50;
     [SerializeField] private float chanceOf3x3Room = 11;
     [SerializeField] private float chanceOfNewFloorMaker = 1;
     [SerializeField] private float chanceOfFloorMakerDeath = 1;
     [SerializeField] private float chanceOfFloorMakerDeathIncrease = 1;
+    [SerializeField] private GameObject ammoChest;
+    [SerializeField] private GameObject weaponChest;
+    [SerializeField] private ObjectCollection enemies;
+    [SerializeField] private float enemiesToSpawn = 6;
 
-    enum tileSet {
-        empty,
-        floor,
-        wall
-    }
+    private int wallPadding = 1;
+    private int floorsPlaced;
+    private List<Vector3Int> ammoChestList = new();
+    private List<Vector3Int> weaponChestList = new();
+    private List<Vector3Int> enemyList = new();
 
     private List<FloorMaker> floorMakers;
     private Random random;
@@ -34,16 +42,13 @@ public class LevelGenerator : MonoBehaviour {
         public Vector3Int Pos;
     }
 
-    private void OnValidate() {
-        //TODO: validate
-        Start();
-    }
-
     private void Start() {
         random = new Random(seed);
         Setup();
-        GenerateFloors(iterations, chanceOf2x2Room, chanceOf3x3Room);
+        GenerateFloors(chanceOf2x2Room, chanceOf3x3Room);
         GenerateWalls();
+        SpawnChests();
+        SpawnEnemies();
     }
     
     private Vector2Int RandomDirection() {
@@ -67,29 +72,63 @@ public class LevelGenerator : MonoBehaviour {
                 Debug.LogWarningFormat("Invalid case");
                 break;
         }
+
         return direction;
     }
 
-    private void Setup() {
+    private void Setup()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        
         floorTileMap.ClearAllTiles();
         wallTileMap.ClearAllTiles();
-        
+        floorsPlaced = 0;
         chanceOfFloorMakerDeathInternal = chanceOfFloorMakerDeath;
         floorMakers = new List<FloorMaker>();
+        
+        ammoChestList.Clear();
+        weaponChestList.Clear();
+        enemyList.Clear();
     }
 
-    private void GenerateFloors(int iterations, float chance2x2, float chance3x3) {
+    private void GenerateFloors(float chance2x2, float chance3x3) {
         // Spawn an initial floorMaker
         SpawnFloorMaker(Vector3Int.zero);
+        // Spawn an initial floor
+        floorTileMap.SetTile(Vector3Int.zero, floorTile);
 
-        int currentIteration = 0;
+        floorsPlaced = 0;
         do {
             for (int i = floorMakers.Count-1; i >= 0; i--) {
                 var floorMaker = floorMakers[i];
                 int rand;
                 
-                // STEP 1: Spawn floor
+                // STEP 1: Move floorMaker
+                floorMaker.Pos += (Vector3Int)floorMaker.Dir;
+                // spawn chest
+                var newDirection =  RandomDirection();
+                if (newDirection + floorMaker.Dir == Vector2Int.zero)
+                {
+                    weaponChestList.Add(floorMaker.Pos);
+                }
+                floorMaker.Dir = newDirection;
+                floorMakers[i] = floorMaker;
+
+                // chance of death
+                rand = random.Next(0, 101);
+                if (floorMakers.Count > 1 && rand < chanceOfFloorMakerDeathInternal)
+                {
+                    ammoChestList.Add(floorMaker.Pos);
+                    floorMakers.Remove(floorMaker);
+                }
+                
+                // STEP 2: Spawn floor
+                if (!floorTileMap.HasTile(floorMaker.Pos)) floorsPlaced++;
                 floorTileMap.SetTile(floorMaker.Pos, floorTile);
+
 
                 // TODO STEP 2: Make rooms
 
@@ -100,47 +139,84 @@ public class LevelGenerator : MonoBehaviour {
                     SpawnFloorMaker(floorMaker.Pos);
                     chanceOfFloorMakerDeathInternal += chanceOfFloorMakerDeathIncrease;
                 }
-                
-                // Move floorMaker
-                floorMaker.Pos += (Vector3Int)floorMaker.Dir;
-                floorMaker.Dir = RandomDirection();
-                floorMakers[i] = floorMaker;
-
-                // chance of death
-                rand = random.Next(0, 101);
-                if (floorMakers.Count > 1 && rand < chanceOfFloorMakerDeathInternal)
-                {
-                    floorMakers.Remove(floorMaker);
-                }
             } 
-        } while (currentIteration++ < iterations);
+        } while (floorsPlaced < MaxFloors);
+
+        foreach (var maker in floorMakers)
+        {
+            ammoChestList.Add(maker.Pos);
+        }
         
         floorTileMap.CompressBounds();
     }
 
     private void GenerateWalls() { //TODO: Optimize
-        for (int i = floorTileMap.cellBounds.xMin; i <= floorTileMap.cellBounds.xMax; i++) {
-            for (int j = floorTileMap.cellBounds.yMin; j <= floorTileMap.cellBounds.yMax; j++) {
-                if (wallTileMap.GetTile(new Vector3Int(i,j,0)) is floorTileMap) {
-                    // Vector2Int result = Vector2Int.zero;
-                    // if ((TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.up) && grid[result.x, result.y] == tileSet.floor)
-                    //     || (TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.down) && grid[result.x, result.y] == tileSet.floor)
-                    //     || (TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.left) && grid[result.x, result.y] == tileSet.floor)
-                    //     || (TryGetTilePosition(out result, new Vector2Int(i, j) + Vector2Int.right) && grid[result.x, result.y] == tileSet.floor)) {
-                    //     grid[i, j] = tileSet.wall;
-                    // }
-                    wallTileMap.SetTile(new Vector3Int(i, j, 0), wallTile);
+        for (int i = floorTileMap.cellBounds.xMin-wallPadding; i <= floorTileMap.cellBounds.xMax+wallPadding; i++) {
+            for (int j = floorTileMap.cellBounds.yMin-wallPadding; j <= floorTileMap.cellBounds.yMax+wallPadding; j++)
+            {
+                Vector3Int pos = new Vector3Int(i, j, 0);
+                if (floorTileMap.HasTile(pos) && !floorTileMap.HasTile(pos + Vector3Int.up)) {
+                    floorTileMap.SetTile(pos, borderTile);
+                }
+                else if (!floorTileMap.HasTile(pos))
+                {
+                    wallTileMap.SetTile(pos, wallTile);
                 }
             } 
         }
+        wallTileMap.CompressBounds();
     }
 
-    private void SpawnFloorMaker(Vector3Int pos)
-    {
+    private void SpawnFloorMaker(Vector3Int pos) {
         FloorMaker maker = new FloorMaker();
         maker.Pos = pos;
         maker.Dir = RandomDirection();
 
         floorMakers.Add(maker);
-    } 
+    }
+
+    private void SpawnObject(Vector3Int pos, GameObject obj)
+    {
+        Instantiate(obj, (Vector3)pos + floorTileMap.cellSize/2, Quaternion.identity, transform);
+    }
+
+    private void SpawnChests()
+    {
+        RemoveButFurthest(ammoChestList);
+        RemoveButFurthest(weaponChestList);
+        
+        SpawnObject(ammoChestList[0], ammoChest);
+        SpawnObject(weaponChestList[0], weaponChest);
+    }
+    
+    private void RemoveButFurthest(List<Vector3Int> positions)
+    {
+        Vector3Int furthest = positions[^1];
+        for (int i = positions.Count-2; i > 0; i--)
+        {
+            if (positions[i + 1].magnitude > furthest.magnitude)
+            {
+                furthest = positions[i];
+            }
+        }
+    }
+    
+    private void SpawnEnemies()
+    {
+        int enemiesSpawned = 0;
+        
+        while (enemiesSpawned < enemiesToSpawn)
+        {
+            int x = random.Next(floorTileMap.cellBounds.xMin, floorTileMap.cellBounds.xMax);
+            int y = random.Next(floorTileMap.cellBounds.yMin, floorTileMap.cellBounds.yMax);
+            Vector3Int pos = new Vector3Int(x, y, 0);
+
+            if (floorTileMap.HasTile(pos))
+            {
+                int index = random.Next(enemies.GetObjects().Count);
+                SpawnObject(pos, enemies.GetObjects()[index]);
+                enemiesSpawned++;
+            }
+        }
+    }
 }

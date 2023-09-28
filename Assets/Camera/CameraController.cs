@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private Texture2D crosshairTexture;
     [SerializeField] private float cameraDistance = 2f;
     [SerializeField] private float smoothTime = 0.2f;
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform playerTransform; //TODO: Circular dependency, FIX
     private Camera camera;
     private float initialZ;
     private Vector3 currentVelocity;

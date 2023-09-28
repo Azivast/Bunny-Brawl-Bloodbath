@@ -3,7 +3,11 @@ guid: bf679d1340da1cf4a9af4f118771b356
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - floorTileMap: {instanceID: 0}
+  - wallTileMap: {instanceID: 0}
+  - floorTile: {fileID: 11400000, guid: 11398f714121b6d4f9f8afe241678dfb, type: 2}
+  - wallTile: {fileID: 11400000, guid: 2aeff169c2b11f346a1b423c84e60f6a, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
