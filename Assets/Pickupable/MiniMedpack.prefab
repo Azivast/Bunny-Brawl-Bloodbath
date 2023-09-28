@@ -11,6 +11,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniMedpack
       objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: despawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: dd44c56797810044b9bffd9d29b0b143, type: 2}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6515968320703088160}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Destroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHealthObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Pickupable, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -117,3 +173,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+--- !u!114 &6515968320703088160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+  m_PrefabInstance: {fileID: 6255217553376070522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5426b3b498ad2f7409eded5f82491b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

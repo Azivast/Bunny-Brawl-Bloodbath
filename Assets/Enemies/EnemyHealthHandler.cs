@@ -7,8 +7,10 @@ using UnityEngine.Events;
 [RequireComponent(typeof(TargetBehaviour))]
 public class EnemyHealthHandler : MonoBehaviour {
     [SerializeField] private int maxHealth = 1;
-    [SerializeField] private int currentHealth;
+    [SerializeField] private ObjectCollection enemiesAliveCollection;
+    private int currentHealth;
     public UnityEvent OnKilled = new UnityEvent();
+    public UnityEvent OnHit = new UnityEvent();
     private TargetBehaviour target;
     
     void Awake() {
@@ -18,13 +20,16 @@ public class EnemyHealthHandler : MonoBehaviour {
 
     private void OnEnable() {
         target.OnAttacked += Hit;
+        enemiesAliveCollection.Register(gameObject);
     }
 
     private void OnDisable() {
         target.OnAttacked -= Hit;
+        enemiesAliveCollection.Unregister(gameObject);
     }
 
     private void Hit(int damage) {
+        OnKilled.Invoke();
         currentHealth -= damage;
         if (currentHealth <= 0) {
             Kill();

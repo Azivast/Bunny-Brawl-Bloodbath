@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7647849598578669256
+--- !u!1001 &5370331822588150102
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,19 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 910749202507631961, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Name
-      value: MiniAmmoChest
+      value: Chest
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
-      propertyPath: despawn
-      value: 1
+      propertyPath: range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: speed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
-      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -30,11 +30,11 @@ PrefabInstance:
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 76045441a5bb6b240b29c6b6c9c2fa0a, type: 2}
+      objectReference: {fileID: -1925050246245127394}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 7386254286039366546}
+      objectReference: {fileID: 5054412921894325260}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddAmmoRandomWeapon
+      value: DropItems
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -53,15 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EquippedWeaponsObject, Assembly-CSharp
+      value: ObjectDropper, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Pickupable, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
-      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -72,9 +68,17 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c33d3a60ad9dcca4aadb6d2657170e30, type: 3}
+      objectReference: {fileID: 21300000, guid: f8542f285bb68f449a46d19ef6b62d34, type: 3}
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -125,11 +129,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Size.x
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Size.y
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_IsTrigger
@@ -145,19 +149,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.4
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.4
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.4
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.4
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -165,14 +169,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
---- !u!114 &7386254286039366546 stripped
+--- !u!114 &5054412921894325260 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
-  m_PrefabInstance: {fileID: 7647849598578669256}
+  m_PrefabInstance: {fileID: 5370331822588150102}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5054412921894325263}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5426b3b498ad2f7409eded5f82491b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5054412921894325263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 910749202507631961, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+  m_PrefabInstance: {fileID: 5370331822588150102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1925050246245127394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054412921894325263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571b3b897297d4c43a9624f8fc222f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: []
+  spread: 1

@@ -8,11 +8,20 @@ using UnityEngine.Events;
 public class Pickupable : MonoBehaviour
 {
     public UnityEvent OnPickup;
-    [Tooltip("Distance from pickup before it starts moving towards player")]
+    [Tooltip("Distance from pickup before it starts moving towards player.")]
     [SerializeField] private float range = 1;
-    [Tooltip("Speed at which the pickup moves towards the player when in range")]
+    [Tooltip("Speed at which the pickup moves towards the player when in range.")]
     [SerializeField] private float speed = 4;
+    [Tooltip("Does the pickup despawn.")]
+    [SerializeField] private bool despawn = true;
+    [Tooltip("How long before the pickup despawns.")]
+    [SerializeField] private float lifetime = 4;
+    
+    private float lifetimeTimer;
 
+    private void Awake() {
+        lifetimeTimer = lifetime;
+    }
 
     private bool TryFindPlayer(out PlayerBehaviour player) {
         int mask = LayerMask.GetMask("Player");
@@ -29,7 +38,12 @@ public class Pickupable : MonoBehaviour
     }
 
     private void Update() {
-        if (!TryFindPlayer(out PlayerBehaviour player)) return;
+        if (despawn) {
+            lifetimeTimer -= Time.deltaTime;
+            if (lifetimeTimer < 0) Destroy(gameObject);
+        }
+        
+        if (!TryFindPlayer(out PlayerBehaviour player)) return; //TODO: Optimize!!!
 
         Vector3 dir = (player.transform.position - transform.position).normalized;
         transform.position += dir * (speed * Time.deltaTime);
@@ -38,8 +52,10 @@ public class Pickupable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Player")) {
             OnPickup.Invoke();
-            Debug.Log("Picked up pickupable");
-            Destroy(gameObject);
         }
+    }
+    
+    public void Destroy() {
+        Destroy(gameObject);
     }
 }

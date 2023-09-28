@@ -37,14 +37,10 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     private void Interact(InputAction.CallbackContext context) {
-        interactHandler.InteractWithClosest(transform.position);
+        interactHandler.Interact();
     }
 
     private void FixedUpdate() {
         rigidbody.velocity = move.action.ReadValue<Vector2>() * speed;
-    }
-
-    private void Update() {
-        interactHandler.Update(transform.position);
     }
 }

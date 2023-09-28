@@ -8,7 +8,9 @@ using UnityEngine.Events;
 public class Interactible : MonoBehaviour
 {
     public UnityEvent OnInteract;
+    public string InteractText = "interact";
     [SerializeField] private InteractHandlerObject interactHandler;
+    private bool inRange;
 
     private void OnEnable() {
         interactHandler.OnPlayerInteract += Interact;
@@ -17,16 +19,18 @@ public class Interactible : MonoBehaviour
         interactHandler.OnPlayerInteract -= Interact;
     }
 
-    private void Interact(Interactible interactable) {
-        if (interactable == this) OnInteract.Invoke();
+    private void Interact() {
+        if (inRange) {
+            OnInteract.Invoke();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
-        interactHandler.InRange(this);
+        inRange = true;
     }
     
     private void OnTriggerExit2D(Collider2D col) {
-        interactHandler.LeftRange(this);
+        inRange = false;
     }
 }
 
