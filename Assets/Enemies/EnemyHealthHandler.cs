@@ -29,7 +29,7 @@ public class EnemyHealthHandler : MonoBehaviour {
     }
 
     private void Hit(int damage) {
-        OnKilled.Invoke();
+        OnHit.Invoke();
         currentHealth -= damage;
         if (currentHealth <= 0) {
             Kill();

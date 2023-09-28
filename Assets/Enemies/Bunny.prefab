@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 468719331699266385}
   - component: {fileID: 468719331699266383}
   - component: {fileID: 468719331699266382}
-  m_Layer: 0
+  - component: {fileID: -5067385753422758756}
+  m_Layer: 9
   m_Name: Bunny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 35771812137876262}
+  - {fileID: 7262096227461826578}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,18 +69,30 @@ MonoBehaviour:
   enemiesAliveCollection: {fileID: 11400000, guid: 2be8973acc4e2ab4bbf9793b5c9b44c4, type: 2}
   OnKilled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5067385753422758756}
+        m_TargetAssemblyTypeName: ObjectDropper, Assembly-CSharp
+        m_MethodName: DropItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7881835215167787357}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -202,6 +216,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.48, y: 0.76}
   m_Direction: 0
+--- !u!114 &-5067385753422758756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571b3b897297d4c43a9624f8fc222f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7386254286039366545, guid: cebb79a78aac8724bbf8a2b6720ecfb1, type: 3}
+  spread: 0.1
 --- !u!1 &5783099774653898744
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,3 +262,78 @@ Transform:
   m_Father: {fileID: 468719331699266387}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &6618491075281881481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 468719331699266387}
+    m_Modifications:
+    - target: {fileID: 3943039802872994004, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943039802872994004, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801916787056940184, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+      propertyPath: m_Name
+      value: BloodEmitter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+--- !u!4 &7262096227461826578 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+  m_PrefabInstance: {fileID: 6618491075281881481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7881835215167787357 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3943039802872994004, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+  m_PrefabInstance: {fileID: 6618491075281881481}
+  m_PrefabAsset: {fileID: 0}

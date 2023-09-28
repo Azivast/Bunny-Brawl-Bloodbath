@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerBehaviour : MonoBehaviour {
+    public UnityEvent OnHit = new UnityEvent();
     [SerializeField] private InputActionReference move, interact;
     [SerializeField] private int speed;
     [SerializeField] private PlayerHealthObject health;
@@ -34,6 +36,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void TakeDamage(int amount) {
         health.Damage(amount);
+        OnHit.Invoke();
     }
 
     private void Interact(InputAction.CallbackContext context) {

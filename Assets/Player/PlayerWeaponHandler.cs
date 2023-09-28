@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,9 @@ public class PlayerWeaponHandler : MonoBehaviour {
     [SerializeField] private CameraController camera;
     [SerializeField] private InputActionReference fire, switchWeapon;
     
-    private int activeWeaponIndex = 0;
     private GameObject activeWeapon;
     private WeaponBehaviour activeWeaponBehaviour;
+    private int bulletLayer = 8;
 
     private void Start() {
         ChangeToWeapon(0);
@@ -23,6 +24,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
         switchWeapon.action.Enable();
         fire.action.performed += OnFire;
         switchWeapon.action.performed += CycleWeapon;
+        weapons.OnWeaponEquipped += OnWeaponEquipped;
     }
     
     private void OnDisable() {
@@ -30,6 +32,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
         fire.action.performed -= OnFire;
         switchWeapon.action.Disable();
         switchWeapon.action.performed -= CycleWeapon;
+        weapons.OnWeaponEquipped -= OnWeaponEquipped;
     }
 
     private void Aim() {
@@ -49,14 +52,18 @@ public class PlayerWeaponHandler : MonoBehaviour {
         activeWeaponBehaviour = activeWeapon.GetComponent<WeaponBehaviour>();
     }
 
+    private void OnWeaponEquipped(GameObject _) {
+        ChangeToWeapon(weapons.ActiveWeaponIndex);
+    }
+
     private void OnFire(InputAction.CallbackContext context) {
-        activeWeaponBehaviour.Shoot();
+        activeWeaponBehaviour.Shoot(bulletLayer);
     }
     
     private void CycleWeapon(InputAction.CallbackContext context) {
-        activeWeaponIndex++;
-        if (activeWeaponIndex > weapons.List.Length - 1) activeWeaponIndex = 0;
+        weapons.ActiveWeaponIndex++;
+        if (weapons.ActiveWeaponIndex > weapons.List.Length - 1) weapons.ActiveWeaponIndex = 0;
         
-        ChangeToWeapon(activeWeaponIndex);
+        ChangeToWeapon(weapons.ActiveWeaponIndex);
     }
 }

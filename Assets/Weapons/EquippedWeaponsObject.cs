@@ -9,10 +9,13 @@ public class EquippedWeaponsObject : ScriptableObject
 {
     [SerializeField] private GameObject[] weapons = new GameObject[2];
 
+    public int ActiveWeaponIndex = 0;
+    public UnityAction<GameObject> OnWeaponEquipped;
     public GameObject[] List => weapons;
 
-    public void EquipNewWeapon(int index, GameObject weapon) {
-        weapons[index] = weapon;
+    public void EquipNewWeapon(GameObject weapon) {
+        weapons[ActiveWeaponIndex] = weapon;
+        OnWeaponEquipped.Invoke(weapon);
     }
 
     public void AddAmmoRandomWeapon(int amount) {

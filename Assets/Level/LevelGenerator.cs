@@ -226,4 +226,12 @@ public class LevelGenerator : MonoBehaviour {
             }
         }
     }
+
+    private void OnApplicationQuit() {
+        //Quickfix TODO
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            DestroyImmediate(transform.GetChild(i).gameObject);
+        }
+    }
 }

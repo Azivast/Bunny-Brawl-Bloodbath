@@ -39,16 +39,17 @@ public class WeaponBehaviour : MonoBehaviour {
         }
     }
 
-    public void Shoot() {
+    public void Shoot(int projectileLayer) {
         if (!(fireTimer <= 0)) return;
-        if (InfiniteAmmo == false) { //TODO: better if
-            if (AmmoType.GetAmmoLeft() < 1) return;
-            else AmmoType.UseAmmo(1);
-        }
-        
+
         fireTimer = fireRate;
         foreach (Transform firingPosition in firingPositions) {
-            Instantiate(projectile, firingPosition.position, firingPosition.rotation);
+            if (InfiniteAmmo == false) {
+                if (AmmoType.GetAmmoLeft() < 1) return;
+                else AmmoType.UseAmmo(1);
+            }
+            var bullet =Instantiate(projectile, firingPosition.position, firingPosition.rotation);
+            bullet.layer = projectileLayer;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,24 +9,34 @@ using UnityEngine.UI;
 public class AmmoType : ScriptableObject
 {
     public UnityAction<int> OnAmountChance = delegate{};
-    public UnityAction<int> OnAmountIncrease = delegate{};
+    public UnityAction<float> OnAmountChancePercent = delegate{};
 
+    [SerializeField] private int maxAmmo = 1;
+    [SerializeField] private int startingAmmo;
     [SerializeField] private int ammoLeft;
-    public Image icon;
+
+    private void OnEnable() {
+        ammoLeft = startingAmmo;
+    }
 
     public int GetAmmoLeft() {
         return ammoLeft;
     }
     
+    public int GetMaxAmmo() {
+        return maxAmmo;
+    }
+    
 
     public void AddAmmo(int amount) {
-        ammoLeft += amount;
-        OnAmountChance(ammoLeft);
-        OnAmountIncrease(amount);
+        ammoLeft = Math.Min(ammoLeft + amount, maxAmmo);
+        OnAmountChance(amount);
+        OnAmountChancePercent((float)ammoLeft / maxAmmo);
     }
     
     public void UseAmmo(int amount) {
-        ammoLeft -= amount;
-        OnAmountChance(ammoLeft);
+        ammoLeft = Math.Max(ammoLeft - amount, 0);
+        OnAmountChance(amount);
+        OnAmountChancePercent((float)ammoLeft / maxAmmo);
     }
 }

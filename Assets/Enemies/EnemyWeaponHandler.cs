@@ -11,6 +11,7 @@ public class EnemyWeaponHandler : MonoBehaviour
     [SerializeField] private float atttackRange;
     
     private WeaponBehaviour weaponBehaviour;
+    private int bulletLayer = 11;
 
     private void Start() {
         weapon = Instantiate(weapon, weaponPosition);
@@ -35,7 +36,7 @@ public class EnemyWeaponHandler : MonoBehaviour
     private void FixedUpdate() {
         if (TryFindTarget(out TargetBehaviour target)) {
             weaponBehaviour.Target = target.transform.position;
-            weaponBehaviour.Shoot();
+            weaponBehaviour.Shoot(bulletLayer);
         }
     }
 }

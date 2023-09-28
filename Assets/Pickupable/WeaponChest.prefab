@@ -1,40 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4454617580234348834
+--- !u!1001 &561995279758931266
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.data[0]
-      value: 
-      objectReference: {fileID: 6515968320703088163, guid: 8121fcd0250133e42a076f5b1dee6fc4, type: 3}
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.data[1]
-      value: 
-      objectReference: {fileID: 6515968320703088163, guid: 8121fcd0250133e42a076f5b1dee6fc4, type: 3}
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.data[2]
-      value: 
-      objectReference: {fileID: 6515968320703088163, guid: 8121fcd0250133e42a076f5b1dee6fc4, type: 3}
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.data[3]
-      value: 
-      objectReference: {fileID: 6515968320703088163, guid: 8121fcd0250133e42a076f5b1dee6fc4, type: 3}
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.data[4]
-      value: 
-      objectReference: {fileID: 6515968320703088163, guid: 8121fcd0250133e42a076f5b1dee6fc4, type: 3}
-    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: objects.Array.data[5]
-      value: 
-      objectReference: {fileID: 6515968320703088163, guid: 8121fcd0250133e42a076f5b1dee6fc4, type: 3}
     - target: {fileID: 5054412921894325258, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -80,12 +52,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5fe36f717474491418c8f3c4e02adea1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2978373
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4635913
+      objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325263, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_Name
-      value: MedpackChest
+      value: WeaponChest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
