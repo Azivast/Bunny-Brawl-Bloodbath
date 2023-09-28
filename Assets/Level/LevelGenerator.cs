@@ -26,6 +26,7 @@ public class LevelGenerator : MonoBehaviour {
     [SerializeField] private GameObject weaponChest;
     [SerializeField] private ObjectCollection enemies;
     [SerializeField] private float enemiesToSpawn = 6;
+    [SerializeField] private float safeZoneRadius = 6;
 
     private int wallPadding = 1;
     private int floorsPlaced;
@@ -207,9 +208,15 @@ public class LevelGenerator : MonoBehaviour {
         
         while (enemiesSpawned < enemiesToSpawn)
         {
-            int x = random.Next(floorTileMap.cellBounds.xMin, floorTileMap.cellBounds.xMax);
-            int y = random.Next(floorTileMap.cellBounds.yMin, floorTileMap.cellBounds.yMax);
-            Vector3Int pos = new Vector3Int(x, y, 0);
+            int x, y;
+            Vector3Int pos;
+            do
+            {
+                x = random.Next(floorTileMap.cellBounds.xMin, floorTileMap.cellBounds.xMax);
+                y = random.Next(floorTileMap.cellBounds.yMin, floorTileMap.cellBounds.yMax);
+                pos = new Vector3Int(x, y, 0);
+            } while (pos.magnitude < safeZoneRadius);
+                 
 
             if (floorTileMap.HasTile(pos))
             {
