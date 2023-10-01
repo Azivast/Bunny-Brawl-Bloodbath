@@ -185,7 +185,19 @@ MonoBehaviour:
   fireRate: 0.1
   onFire:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6635905553003242868}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 40a0cfdfb801f4e4d96744d6d481e39d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   InfiniteAmmo: 0
 --- !u!212 &4236152462785639087
 SpriteRenderer:
@@ -293,7 +305,7 @@ AudioSource:
   m_GameObject: {fileID: 7837799596735370733}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 9cc0318c699bce8469faf1c04a627b33, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

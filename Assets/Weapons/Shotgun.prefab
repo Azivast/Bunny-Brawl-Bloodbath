@@ -69,6 +69,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1627943248746036259, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3294644933652641059, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -137,6 +141,10 @@ PrefabInstance:
       propertyPath: firingPositions.Array.data[2]
       value: 
       objectReference: {fileID: 8600132383389448391}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 43ddf643432bd94498015ca8687a22bb, type: 3}
     - target: {fileID: 7837799596735370733, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: m_Name
       value: Shotgun

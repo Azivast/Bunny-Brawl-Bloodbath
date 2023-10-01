@@ -29,11 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 5054412921894325260}
+      objectReference: {fileID: -1864922356490247781}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Destroy
+      value: PlayOneShot
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -65,15 +65,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Pickupable, Assembly-CSharp
+      value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 858f565292372e94ead9523e6edc4813, type: 3}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Size.x
@@ -177,22 +181,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
---- !u!114 &5054412921894325260 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
-  m_PrefabInstance: {fileID: 5370331822588150102}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054412921894325263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5426b3b498ad2f7409eded5f82491b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5054412921894325263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 910749202507631961, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
   m_PrefabInstance: {fileID: 5370331822588150102}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &-1864922356490247781
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054412921894325263}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 9cc0318c699bce8469faf1c04a627b33, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &-1925050246245127394
 MonoBehaviour:
   m_ObjectHideFlags: 0

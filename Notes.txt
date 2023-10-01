@@ -14,6 +14,11 @@ https://nuclear-throne.fandom.com/wiki/Pickups_and_Props
 
 font: https://opengameart.org/content/kenney-fonts
 
+sfx cc0: https://opengameart.org/content/the-free-firearm-sound-library
+sfx cc0: https://opengameart.org/content/female-rpg-voice-starter-pack
+
+
+
 things to look at:
 https://www.youtube.com/watch?v=C949ILsyywg
 https://www.youtube.com/watch?v=etI-2dHeufc

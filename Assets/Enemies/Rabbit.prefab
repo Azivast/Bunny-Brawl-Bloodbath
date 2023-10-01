@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: atttackRange
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5598010578160338962, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: ec3d94baed07a664f980b1421630ccc8, type: 3}
     m_RemovedComponents:
     - {fileID: 8657434626488876039, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
