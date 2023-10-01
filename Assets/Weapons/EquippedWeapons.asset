@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead3fad71f3967944afe83bf5a00675e, type: 3}
   m_Name: EquippedWeapons
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 4573578538294145162, guid: 4e2e10a53ab10334f8a5f8d11a054a61, type: 3}
+  startingWeapons:
   - {fileID: 731707393443277631, guid: cae0256acb618284390fddf793cca3a6, type: 3}
-  - {fileID: 4573578538294145162, guid: fb586eccdd9009f4caf95a8fac86264d, type: 3}
   - {fileID: 2370254857693540697, guid: 984cb929862c133488bfe2329e218c25, type: 3}
+  weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  ActiveWeaponIndex: 0

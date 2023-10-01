@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private Texture2D crosshairTexture;
     [SerializeField] private float cameraDistance = 2f;
     [SerializeField] private float smoothTime = 0.2f;
-    [SerializeField] private Transform playerTransform; //TODO: Circular dependency, FIX
+    [SerializeField] private Transform targetTransform;
     private Camera camera;
     private float initialZ;
     private Vector3 currentVelocity;
@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour {
     
     private void UpdateCameraPosition() {
         var offset = MouseViewPosition() * cameraDistance;
-        var target = playerTransform.position + offset;
+        var target = targetTransform.position + offset;
         target.z = initialZ;
 
         transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, smoothTime);

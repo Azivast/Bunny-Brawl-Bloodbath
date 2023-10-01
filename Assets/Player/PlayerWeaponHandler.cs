@@ -44,15 +44,21 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void ChangeToWeapon(int index) {
-        if (weaponPosition.childCount > 0) {
-            Destroy(weaponPosition.GetChild(0).gameObject);
+
+        for (int i = 0; i < weaponPosition.childCount; i++) {
+            weaponPosition.GetChild(i).gameObject.SetActive(false);
         }
 
-        activeWeapon = Instantiate(weapons.List[index], weaponPosition);
+        activeWeapon = weapons.List[index];
+        activeWeapon.transform.parent = weaponPosition;
+        activeWeapon.transform.localPosition = Vector3.zero;
         activeWeaponBehaviour = activeWeapon.GetComponent<WeaponBehaviour>();
+        activeWeapon.SetActive(true);
     }
 
     private void OnWeaponEquipped(GameObject _) {
+        activeWeapon.transform.parent = null; // Drop active weapon
+        activeWeapon.transform.rotation = Quaternion.identity;
         ChangeToWeapon(weapons.ActiveWeaponIndex);
     }
 

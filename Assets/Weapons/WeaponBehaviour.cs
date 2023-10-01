@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -11,6 +12,7 @@ public class WeaponBehaviour : MonoBehaviour {
     public AmmoType AmmoType;
     [SerializeField] private Transform[] firingPositions;
     [SerializeField] private float fireRate = 1;
+    [SerializeField] private UnityEvent onFire;
     public bool InfiniteAmmo = false;
     
     private Quaternion rotation;
@@ -48,8 +50,9 @@ public class WeaponBehaviour : MonoBehaviour {
                 if (AmmoType.GetAmmoLeft() < 1) return;
                 else AmmoType.UseAmmo(1);
             }
-            var bullet =Instantiate(projectile, firingPosition.position, firingPosition.rotation);
+            var bullet = Instantiate(projectile, firingPosition.position, firingPosition.rotation);
             bullet.layer = projectileLayer;
         }
+        onFire.Invoke();
     }
 }

@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 3350798044463244803, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 8390488424815572418, guid: 2a6d9542736c5594fa786f8179563f33, type: 3}
+      objectReference: {fileID: 5088376810789486744, guid: 42a155399864b184493c607c32057a4e, type: 3}
     - target: {fileID: 3350798044463244803, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: atttackRange
       value: 0.5

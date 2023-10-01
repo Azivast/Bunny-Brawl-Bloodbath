@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6237470818123365014}
   - component: {fileID: 8311224890564858028}
+  - component: {fileID: 3047051382195744646}
   m_Layer: 0
   m_Name: GameBehaviour
   m_TagString: Untagged
@@ -44,4 +45,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0a409ec4957da48b192302fbe49343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemiesAlive: {fileID: 11400000, guid: 2be8973acc4e2ab4bbf9793b5c9b44c4, type: 2}
+  enemiesAlive: {fileID: 0}
+  playerHealth: {fileID: 0}
+  OnAllEnemiesKilled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3047051382195744646}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: ChangeSceneTo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Main Menu
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlayerDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3047051382195744646}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: ChangeSceneTo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Main Menu
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3047051382195744646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032964322930362121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9bbe121aafb4445b951022e40eb803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

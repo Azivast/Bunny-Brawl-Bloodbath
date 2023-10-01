@@ -1,6 +1,5 @@
-Fixa så att ammo inte sparas mellan starter
-Vapen pickup - droppa aktivt vapen
 Animation
 Ljud
 Minska coupling
 Grafik
+svärd

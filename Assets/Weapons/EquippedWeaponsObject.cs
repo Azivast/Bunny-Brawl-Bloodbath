@@ -3,19 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Object = UnityEngine.Object;
 
 [CreateAssetMenu(fileName = "EquippedWeapons", menuName = "Bunny Brawl Bloodbath/EquippedWeaponsObject")]
 public class EquippedWeaponsObject : ScriptableObject
 {
+    [SerializeField] private GameObject[] startingWeapons = new GameObject[2];
     [SerializeField] private GameObject[] weapons = new GameObject[2];
 
     public int ActiveWeaponIndex = 0;
     public UnityAction<GameObject> OnWeaponEquipped;
     public GameObject[] List => weapons;
 
+    private void OnEnable() {
+        weapons = new GameObject[startingWeapons.Length];
+        for (int i = 0; i < startingWeapons.Length; i++) {
+            weapons[i] = Instantiate(startingWeapons[i]);
+            weapons[i].SetActive(false);
+        }
+    }
+
+    private void OnDisable() {
+        for (int i = startingWeapons.Length-1; i >= 0; i--) {
+            Destroy(weapons[i]);
+        }
+    }
+
     public void EquipNewWeapon(GameObject weapon) {
+        weapon.SetActive(false);
         weapons[ActiveWeaponIndex] = weapon;
-        OnWeaponEquipped.Invoke(weapon);
+        OnWeaponEquipped.Invoke(weapons[ActiveWeaponIndex]);
     }
 
     public void AddAmmoRandomWeapon(int amount) {
