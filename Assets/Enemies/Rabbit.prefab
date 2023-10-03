@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 35771812137876262, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 468719331699266381, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: m_Name
       value: Rabbit

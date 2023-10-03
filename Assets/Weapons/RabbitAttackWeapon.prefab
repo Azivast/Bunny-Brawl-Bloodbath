@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2852950270342375848, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852950270342375848, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852950270342375848, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852950270342375848, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3294644933652641059, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -60,6 +76,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8390488424815572418, guid: 2a6d9542736c5594fa786f8179563f33, type: 3}
@@ -67,10 +87,23 @@ PrefabInstance:
       propertyPath: InfiniteAmmo
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7837799596735370733, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: m_Name
       value: RabbitAttackWeapon
       objectReference: {fileID: 0}
+    - target: {fileID: 8887809741613362626, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887809741613362626, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3483585307433806849, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+    - {fileID: 2852950270342375848, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}

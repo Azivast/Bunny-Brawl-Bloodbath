@@ -43,7 +43,7 @@ public class Pickupable : MonoBehaviour
             if (lifetimeTimer < 0) Destroy(gameObject);
         }
         
-        if (!TryFindPlayer(out PlayerBehaviour player)) return; //TODO: Optimize!!!
+        if (!TryFindPlayer(out PlayerBehaviour player)) return;
 
         Vector3 dir = (player.transform.position - transform.position).normalized;
         transform.position += dir * (speed * Time.deltaTime);

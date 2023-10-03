@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class UprightRotationHandler : MonoBehaviour
+public class EnsureUpright : MonoBehaviour
 {
     void Update()
     {

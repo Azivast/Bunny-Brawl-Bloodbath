@@ -25,7 +25,11 @@ public class EquippedWeaponsObject : ScriptableObject
 
     private void OnDisable() {
         for (int i = startingWeapons.Length-1; i >= 0; i--) {
-            Destroy(weapons[i]);
+#if UNITY_EDITOR
+            DestroyImmediate(weapons[i]);
+#else
+        Destroy(weapons[i]);
+#endif
         }
     }
 
