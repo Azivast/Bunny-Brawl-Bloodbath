@@ -1,5 +1,4 @@
 Animation
-Ljud
 Minska coupling
 Grafik
-svärd
+line of sight

@@ -16,7 +16,8 @@ font: https://opengameart.org/content/kenney-fonts
 
 sfx cc0: https://opengameart.org/content/the-free-firearm-sound-library
 sfx cc0: https://opengameart.org/content/female-rpg-voice-starter-pack
-
+sfx cc0: https://opengameart.org/content/3-melee-sounds
+sfx cc0:
 
 
 things to look at:

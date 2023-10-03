@@ -13,6 +13,8 @@ public class WeaponBehaviour : MonoBehaviour {
     [SerializeField] private Transform[] firingPositions;
     [SerializeField] private float fireRate = 1;
     [SerializeField] private UnityEvent onFire;
+    [SerializeField] private UnityEvent onPostFire;
+    [SerializeField] private float postFireDelay = 0.1f;
     public bool InfiniteAmmo = false;
     
     private Quaternion rotation;
@@ -54,5 +56,12 @@ public class WeaponBehaviour : MonoBehaviour {
             bullet.layer = projectileLayer;
         }
         onFire.Invoke();
+        StartCoroutine(PostShoot());
+    }
+    
+    IEnumerator PostShoot()
+    {
+        yield return new WaitForSeconds(postFireDelay);
+        onPostFire.Invoke();
     }
 }

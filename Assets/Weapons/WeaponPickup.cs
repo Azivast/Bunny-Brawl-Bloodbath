@@ -27,11 +27,13 @@ public class WeaponPickup : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
+        if (transform.parent != null) return;
         inRange = true;
-        OnInRange.Invoke(true);
+         OnInRange.Invoke(true);
     }
     
     private void OnTriggerExit2D(Collider2D col) {
+        if (transform.parent != null) return;
         inRange = false;
         inRange = false;
         OnInRange.Invoke(false);

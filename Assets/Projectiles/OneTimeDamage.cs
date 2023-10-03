@@ -8,17 +8,19 @@ using UnityEngine;
 public class OneTimeDamage : MonoBehaviour
 {
     [SerializeField] private int amount = 1;
+    [SerializeField] private int framesAlive = 1;
 
-    private int framesAlive = 0;
+    private int currentFrame = 0;
+
     
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.TryGetComponent(out TargetBehaviour target)) {
             target.Attack(amount);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
     private void FixedUpdate() {
-        if (framesAlive++ > 0) Destroy(gameObject);
+        if (currentFrame++ >= framesAlive) Destroy(gameObject);
     }
 }
