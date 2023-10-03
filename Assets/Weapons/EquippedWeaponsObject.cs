@@ -15,7 +15,7 @@ public class EquippedWeaponsObject : ScriptableObject
     public UnityAction<GameObject> OnWeaponEquipped;
     public GameObject[] List => weapons;
 
-    private void OnEnable() {
+    public void Reset() {
         weapons = new GameObject[startingWeapons.Length];
         for (int i = 0; i < startingWeapons.Length; i++) {
             weapons[i] = Instantiate(startingWeapons[i]);

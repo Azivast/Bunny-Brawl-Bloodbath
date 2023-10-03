@@ -24,9 +24,13 @@ PrefabInstance:
       value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 468719331699266385, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+      propertyPath: m_Size.x
+      value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 468719331699266385, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 31ecf08a057376845bfdbdd36ae443f6, type: 3}
+      objectReference: {fileID: 1377181367, guid: 31ecf08a057376845bfdbdd36ae443f6, type: 3}
     - target: {fileID: 468719331699266387, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -71,6 +75,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3146995540805781364, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85af688780bce1846b6e772ac58a1ee9, type: 2}
     - target: {fileID: 3350798044463244803, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: weapon
       value: 

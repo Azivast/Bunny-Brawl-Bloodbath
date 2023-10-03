@@ -6,15 +6,18 @@ using UnityEngine;
 using Random = System.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class RabbitMovement : MonoBehaviour {
     [SerializeField] private float speed = 1;
     [SerializeField] private float range = 5;
+    private Animator animator;
     private Rigidbody2D rb;
     private float moveTimer;
 
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Move(Vector3 target) {
@@ -38,5 +41,9 @@ public class RabbitMovement : MonoBehaviour {
     private void FixedUpdate() {
         if (TryFindPlayer(out Vector3 target))
         Move(target);
+    }
+    
+    private void Update() {
+        animator.SetFloat("Velocity", rb.velocity.magnitude);
     }
 }

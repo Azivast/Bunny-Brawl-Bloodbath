@@ -15,8 +15,9 @@ public class AmmoType : ScriptableObject
     [SerializeField] private int startingAmmo;
     [SerializeField] private int ammoLeft;
 
-    private void OnEnable() {
+    public void Reset() {
         ammoLeft = startingAmmo;
+        OnAmountChancePercent((float)ammoLeft / maxAmmo);
     }
 
     public int GetAmmoLeft() {

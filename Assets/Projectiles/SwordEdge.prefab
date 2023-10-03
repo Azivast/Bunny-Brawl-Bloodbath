@@ -116,5 +116,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc85fe35685f2c46ad7db8f20a5dafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 1
+  amount: 3
   framesAlive: 3

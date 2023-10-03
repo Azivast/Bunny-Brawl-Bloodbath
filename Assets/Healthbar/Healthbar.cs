@@ -12,7 +12,6 @@ public class Healthbar : MonoBehaviour {
 
     private void OnEnable() {
         healthObject.OnHealthChange += UpdateBar;
-        UpdateBar(healthObject.CurrentHealth, healthObject.MaxHealth);
     }
 
     private void OnDisable() {

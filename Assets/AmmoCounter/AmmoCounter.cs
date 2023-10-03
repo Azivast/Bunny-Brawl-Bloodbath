@@ -13,7 +13,6 @@ public class AmmoCounter : MonoBehaviour
 
     private void OnEnable() {
         ammoType.OnAmountChancePercent += UpdateCounter;
-        UpdateCounter((float)ammoType.GetAmmoLeft()/ammoType.GetMaxAmmo());
     }
 
     private void OnDisable() {

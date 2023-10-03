@@ -14,8 +14,9 @@ public class PlayerHealthObject : ScriptableObject
     public UnityAction<int, int> OnHealthChange = delegate{}; // <newHealth, maxHealth>
     public UnityAction OnPlayerDied = delegate { };
 
-    private void OnEnable() {
+    public void Reset() {
         CurrentHealth = MaxHealth;
+        OnHealthChange(CurrentHealth, MaxHealth);
     }
 
     public void Damage(int amount) {

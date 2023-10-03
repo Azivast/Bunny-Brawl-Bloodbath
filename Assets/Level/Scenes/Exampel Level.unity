@@ -408,6 +408,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223533221895728403, guid: c5c3406ae75b5d64a8eb6e23067a0258, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7322768617946683295, guid: c5c3406ae75b5d64a8eb6e23067a0258, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -481,21 +485,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponChest
       objectReference: {fileID: 0}
-    - target: {fileID: 4749180494331902287, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749180494331902287, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749180494331902287, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7098872282205773404, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
       propertyPath: spread
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7098872282205773404, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
       propertyPath: objects.Array.data[0]
@@ -5947,21 +5939,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponChest (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4749180494331902287, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749180494331902287, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749180494331902287, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7098872282205773404, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
       propertyPath: spread
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7098872282205773404, guid: 5c19bdf9d26585740a6025de2377c637, type: 3}
       propertyPath: objects.Array.data[0]
@@ -6047,7 +6027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328440914215097805, guid: c08aabe161824bb40be1551258ff2f4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -713.211
+      value: -713.23
       objectReference: {fileID: 0}
     - target: {fileID: 2328440914215097805, guid: c08aabe161824bb40be1551258ff2f4c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8529,6 +8509,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8760444375811259933, guid: b2147f35b719e5242b6c1797949b1845, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.34509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760444375811259933, guid: b2147f35b719e5242b6c1797949b1845, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.6313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760444375811259933, guid: b2147f35b719e5242b6c1797949b1845, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.47058827
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081722558611509450, guid: b2147f35b719e5242b6c1797949b1845, type: 3}
+      propertyPath: m_CropFrameX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081722558611509450, guid: b2147f35b719e5242b6c1797949b1845, type: 3}
+      propertyPath: m_CropFrameY
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2147f35b719e5242b6c1797949b1845, type: 3}
 --- !u!4 &1798623951 stripped
@@ -8588,6 +8588,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesAlive: {fileID: 11400000, guid: 2be8973acc4e2ab4bbf9793b5c9b44c4, type: 2}
   playerHealth: {fileID: 11400000, guid: dd44c56797810044b9bffd9d29b0b143, type: 2}
+  weapons: {fileID: 11400000, guid: 76045441a5bb6b240b29c6b6c9c2fa0a, type: 2}
+  ammoTypes:
+  - {fileID: 11400000, guid: 6dbd622507657474694b352fb7fe33ab, type: 2}
+  - {fileID: 11400000, guid: 53abfb4852c578d469f19ab4fc1da2c3, type: 2}
+  - {fileID: 11400000, guid: b90824f30e1bf194a890bf2711bb1745, type: 2}
   OnAllEnemiesKilled:
     m_PersistentCalls:
       m_Calls:
@@ -8600,7 +8605,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: Win
           m_BoolArgument: 0
         m_CallState: 2
   OnPlayerDied:
@@ -8615,7 +8620,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: Loose
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1853840576

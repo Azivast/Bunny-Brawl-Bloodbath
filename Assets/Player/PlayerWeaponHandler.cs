@@ -33,6 +33,10 @@ public class PlayerWeaponHandler : MonoBehaviour {
         switchWeapon.action.Disable();
         switchWeapon.action.performed -= CycleWeapon;
         weapons.OnWeaponEquipped -= OnWeaponEquipped;
+        
+        for (int i = 0; i < weaponPosition.childCount; i++) {
+            Destroy(weaponPosition.GetChild(i));
+        }
     }
 
     private void Aim() {
@@ -44,7 +48,6 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void ChangeToWeapon(int index) {
-
         for (int i = 0; i < weaponPosition.childCount; i++) {
             weaponPosition.GetChild(i).gameObject.SetActive(false);
         }

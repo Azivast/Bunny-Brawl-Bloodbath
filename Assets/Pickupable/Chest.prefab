@@ -29,10 +29,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
@@ -44,11 +48,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1864922356490247781}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 5054412921894325261}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
@@ -60,6 +72,10 @@ PrefabInstance:
       value: PlayOneShot
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ObjectDropper, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -68,9 +84,17 @@ PrefabInstance:
       value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.SpriteRenderer, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 8300000, guid: 858f565292372e94ead9523e6edc4813, type: 3}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: -1861304556, guid: f8542f285bb68f449a46d19ef6b62d34, type: 3}
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -78,6 +102,10 @@ PrefabInstance:
     - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 910749202507631962, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Sprite, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Size.x
@@ -90,7 +118,7 @@ PrefabInstance:
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f8542f285bb68f449a46d19ef6b62d34, type: 3}
+      objectReference: {fileID: 1591076318, guid: f8542f285bb68f449a46d19ef6b62d34, type: 3}
     - target: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -169,11 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.84
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3119019092571263833, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -181,6 +209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+--- !u!212 &5054412921894325261 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 910749202507631963, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
+  m_PrefabInstance: {fileID: 5370331822588150102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5054412921894325263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 910749202507631961, guid: 205e151628075a24a87d9e9a5e7873fd, type: 3}
