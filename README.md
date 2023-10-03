@@ -1,2 +1,2 @@
 # Bunny-Brawl-Bloodbath
- Evenbased focused prototype based on Nuclear Throne
+ Event oriented prototype based on Nuclear Throne
