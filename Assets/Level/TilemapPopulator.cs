@@ -11,7 +11,7 @@ namespace ProceduralGeneration
     public class TilemapPopulator
     {
         [SerializeField] private Tilemap groundMap, wallMap;
-        [SerializeField] private Tile groundTile, wallsTile;
+        [SerializeField] private Tile groundTile, edgeTile, wallTile;
 
         public void Populate(LevelGenerator.AvailableTiles[,] levelData)
         {
@@ -22,14 +22,22 @@ namespace ProceduralGeneration
             // Populate
             for (var y = 0; y < levelData.GetLength(1); y++) // loop through y
             {
-                for (var x = 0; x < levelData.GetLength(0); x++) // loop through x
-                {
-                    var tile = levelData[x, y];
-                    if (tile == LevelGenerator.AvailableTiles.Ground)
-                    {
-                        groundMap.SetTile(new Vector3Int(x, y), groundTile);
-                    }
-                }
+             for (var x = 0; x < levelData.GetLength(0); x++) // loop through x
+             {
+                 var tile = levelData[x, y];
+                 if (tile == LevelGenerator.AvailableTiles.Ground)
+                 {
+                     if (y < levelData.GetLength(1)-1 && levelData[x, y + 1] == LevelGenerator.AvailableTiles.Wall)
+                     {
+                         groundMap.SetTile(new Vector3Int(x, y), edgeTile);
+                     }
+                     else groundMap.SetTile(new Vector3Int(x, y), groundTile);
+                 }
+                 else
+                 {
+                     wallMap.SetTile(new Vector3Int(x, y), wallTile);
+                 }
+             }
             }
         }
     }

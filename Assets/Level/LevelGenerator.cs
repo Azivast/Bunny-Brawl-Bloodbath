@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SearchService;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
@@ -25,6 +26,8 @@ namespace ProceduralGeneration
         private Random random;
         private Vector2Int startingTile;
         private AvailableTiles[,] generatedLevel;
+        private List<Vector2Int> itemPositions;
+        private Vector2Int spawnPosition;
 
         private void Start()
         {
@@ -41,7 +44,7 @@ namespace ProceduralGeneration
         {
             seed = UnityEngine.Random.Range(0, 1000000);
         }
-
+        
         public void Generate()
         {
             // Setup
@@ -49,11 +52,13 @@ namespace ProceduralGeneration
             generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y]; // todo: prettify this
             startingTile.x = levelCapacity.x/2;
             startingTile.y = levelCapacity.y/2;
+            itemPositions = new List<Vector2Int>();
             
             // Create agent
             Agent agent = new Agent(startingTile, levelCapacity, random);
             // Place starting tile
             generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground;
+            spawnPosition = agent.Position;
 
             for (int i = 0; i < agentSteps; i++)
             {
@@ -67,7 +72,10 @@ namespace ProceduralGeneration
                 if (newDirectionChance < agent.ChangeDirectionChance)
                 {
                     agent.ChangeDirectionChance = 0;
-                    agent.RandomizeDirection();
+                    if (agent.RandomizeDirection()) // if 180 degree turn, save position as potential item spawn point
+                    {
+                        itemPositions.Add(agent.Position);
+                    }
                 }
                 else
                 {
@@ -100,12 +108,15 @@ namespace ProceduralGeneration
             
             // Populate Tilemap
             tilemapPopulator.Populate(generatedLevel);
+            
+            // Spawn Items
+            SpawnItems(itemPositions);
         }
 
         private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
         {
-            if (position.x >= levelCapacity.x || position.x < 0 ||
-                position.y >= levelCapacity.y || position.y < 0)
+            if (position.x >= levelCapacity.x-1 || position.x < 1 ||
+                position.y >= levelCapacity.y-1 || position.y < 1)
             {
                 return false;
             }
@@ -114,6 +125,25 @@ namespace ProceduralGeneration
                 generatedLevel[position.x, position.y] = type;
                 return true;
             }
+        }
+
+        private void SpawnItems(List<Vector2Int> spawnPositions)
+        {
+
+        }
+
+        private void OnDrawGizmos()
+        {
+            // Item spots
+            foreach (var pos in itemPositions)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 1);
+            }
+
+            // Player spawn
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 1);
         }
     }
 

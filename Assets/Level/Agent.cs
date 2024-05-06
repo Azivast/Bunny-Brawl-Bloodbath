@@ -38,8 +38,8 @@ namespace ProceduralGeneration
         {
             Vector2Int newPos = Position + Direction;
             
-            if (newPos.x >= levelBounds.x || newPos.x < 0 ||
-                newPos.y >= levelBounds.y || newPos.y < 0)
+            if (newPos.x >= levelBounds.x-1 || newPos.x < 1 ||
+                newPos.y >= levelBounds.y-1 || newPos.y < 1)
             {
 
                 return false;
@@ -50,9 +50,10 @@ namespace ProceduralGeneration
             }
         }
 
-        public void RandomizeDirection()
+
+        public bool RandomizeDirection()
         {
-            Direction = random.Next(4) switch
+            Vector2Int newDirection = random.Next(4) switch
             {
                 0 => Vector2Int.left,
                 1 => Vector2Int.up,
@@ -60,6 +61,16 @@ namespace ProceduralGeneration
                 3 => Vector2Int.down,
                 _ => throw new Exception("random integer out of range")
             };
+            if (newDirection + Direction == Vector2Int.zero) // 180 degree turn
+            {
+                Direction = newDirection;
+                return true;
+            }
+            else
+            {
+                Direction = newDirection;
+                return false;
+            }
         }
     }
 }

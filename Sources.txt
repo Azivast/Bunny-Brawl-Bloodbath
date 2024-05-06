@@ -1,3 +1,9 @@
 Procedural Content Generation in Games,  Noor Shaker , Julian Togelius , Mark J. Nelson.
 https://link.springer.com/book/10.1007/978-3-319-42716-4
 För Agent-based dungeon growing,
+
+
+Random level generation in Wasteland Kings
+https://www.vlambeer.com/2013/04/02/random-level-generation-in-wasteland-kings/ (död länk)
+https://web.archive.org/web/20131208231531/http://www.vlambeer.com/2013/04/02/random-level-generation-in-wasteland-kings/
+För placering av kistor
