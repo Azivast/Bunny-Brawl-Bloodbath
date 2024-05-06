@@ -14,20 +14,45 @@ namespace ProceduralGeneration
         public Vector2Int Direction;
         public Vector2Int Position;
 
-        public Agent(Vector2Int dir, Vector2Int pos)
+        private Vector2Int levelBounds;
+        private Random random;
+
+        public Agent(Vector2Int pos, Vector2Int levelBounds, Random random)
         {
-            Direction = dir;
             Position = pos;
+            this.levelBounds = levelBounds;
+            this.random = random;
+            RandomizeDirection();
         }
 
         public void Move()
         {
+            while (!CheckMove())
+            {
+                RandomizeDirection();
+            }
             Position += Direction;
         }
 
-        public void RandomizeDirection(Random rand)
+        private bool CheckMove()
         {
-            Direction = rand.Next(4) switch
+            Vector2Int newPos = Position + Direction;
+            
+            if (newPos.x >= levelBounds.x || newPos.x < 0 ||
+                newPos.y >= levelBounds.y || newPos.y < 0)
+            {
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void RandomizeDirection()
+        {
+            Direction = random.Next(4) switch
             {
                 0 => Vector2Int.left,
                 1 => Vector2Int.up,

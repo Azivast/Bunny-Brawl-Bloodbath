@@ -15,6 +15,11 @@ namespace ProceduralGeneration
 
         public void Populate(LevelGenerator.AvailableTiles[,] levelData)
         {
+            // Reset
+            groundMap.ClearAllTiles();
+            wallMap.ClearAllTiles();
+            
+            // Populate
             for (var y = 0; y < levelData.GetLength(1); y++) // loop through y
             {
                 for (var x = 0; x < levelData.GetLength(0); x++) // loop through x
@@ -23,9 +28,7 @@ namespace ProceduralGeneration
                     if (tile == LevelGenerator.AvailableTiles.Ground)
                     {
                         groundMap.SetTile(new Vector3Int(x, y), groundTile);
-                        Debug.Log("Place tile at: " + new Vector3Int(x, y));
                     }
-                    else Debug.Log("Tile is not ground");
                 }
             }
         }

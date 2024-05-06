@@ -28,22 +28,30 @@ namespace ProceduralGeneration
 
         private void Start()
         {
+            GenerateNew();
+        }
+
+        public void GenerateNew()
+        {
             PrepareGeneration();
             Generate();
         }
 
         private void PrepareGeneration()
         {
-            generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y]; // todo: prettify this
-            random = new Random(seed);
-            // Start at center 
-            startingTile.x = levelCapacity.x/2;
-            startingTile.y = levelCapacity.y/2;
+            seed = UnityEngine.Random.Range(0, 1000000);
         }
 
-        private void Generate()
+        public void Generate()
         {
-            Agent agent = new Agent(Vector2Int.right, startingTile);
+            // Setup
+            random = new Random(seed);
+            generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y]; // todo: prettify this
+            startingTile.x = levelCapacity.x/2;
+            startingTile.y = levelCapacity.y/2;
+            
+            // Create agent
+            Agent agent = new Agent(startingTile, levelCapacity, random);
             // Place starting tile
             generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground;
 
@@ -52,14 +60,14 @@ namespace ProceduralGeneration
                 agent.Move();
                 
                 // Place tile
-                generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground;
-                
+                generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground; // replace with function that verifies if within array
+
                 // Change direction?
-                int newDirectionChance = random.Next(101); //exclusive upper bound
+                int newDirectionChance = random.Next(100);
                 if (newDirectionChance < agent.ChangeDirectionChance)
                 {
-                    agent.RandomizeDirection(random);
                     agent.ChangeDirectionChance = 0;
+                    agent.RandomizeDirection();
                 }
                 else
                 {
@@ -67,12 +75,21 @@ namespace ProceduralGeneration
                 }
                 
                 // Place Room?
-                int newRoomChance = random.Next(101);
+                int newRoomChance = random.Next(100);
                 if (newRoomChance < agent.AddRoomChance)
                 {
-                    int roomWidth = random.Next(minRoomSize, maxRoomSize + 1);
-                    int roomLength = random.Next(minRoomSize, maxRoomSize + 1);
-                    //todo: place room around agent
+                    Vector2Int roomSize = new Vector2Int(random.Next(minRoomSize, maxRoomSize + 1), random.Next(minRoomSize, maxRoomSize + 1));
+                    Vector2Int startPos = agent.Position - (roomSize / 2);
+
+                    // Place room centered around agent
+                    for (int y = 0; y < roomSize.y; y++)
+                    {
+                        for (int x = 0; x <  roomSize.x; x++)
+                        {
+                            TryPlaceTile(startPos + new Vector2Int(x, y), AvailableTiles.Ground);
+                        }
+                    }
+                    
                     agent.AddRoomChance = 0;
                 }
                 else
@@ -83,6 +100,20 @@ namespace ProceduralGeneration
             
             // Populate Tilemap
             tilemapPopulator.Populate(generatedLevel);
+        }
+
+        private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
+        {
+            if (position.x >= levelCapacity.x || position.x < 0 ||
+                position.y >= levelCapacity.y || position.y < 0)
+            {
+                return false;
+            }
+            else
+            {
+                generatedLevel[position.x, position.y] = type;
+                return true;
+            }
         }
     }
 
@@ -95,7 +126,14 @@ namespace ProceduralGeneration
 
             if (GUILayout.Button("Generate"))
             {
-                // todo: implement generate button
+                LevelGenerator generator = target as LevelGenerator;
+                generator.Generate();
+            }
+            
+            if (GUILayout.Button("Randomize New"))
+            {
+                LevelGenerator generator = target as LevelGenerator;
+                generator.GenerateNew();
             }
         }
     }
