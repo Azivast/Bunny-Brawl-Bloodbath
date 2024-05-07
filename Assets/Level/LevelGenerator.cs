@@ -16,18 +16,25 @@ namespace ProceduralGeneration
             Wall,
             Ground,
         }
+        [Header("Level Settings")]
         [SerializeField] private Vector2Int levelCapacity = new Vector2Int(1000,1000);
         [SerializeField] private int minRoomSize = 3;
         [SerializeField] private int maxRoomSize = 7;
-        [SerializeField] private int agentSteps = 10;
         [SerializeField] private int seed = 1234567;
+        [Header("Agent Settings")]
+        [SerializeField] private int agentDirectionChance = 5;
+        [SerializeField] private int agentRoomChance = 5;
+        [SerializeField] private int agentSteps = 10;
+        [Header("Components")]
         [SerializeField] private TilemapPopulator tilemapPopulator = new TilemapPopulator();
+        [SerializeField] private LevelItemSpawner itemSpawner = new LevelItemSpawner();
         
         private Random random;
         private Vector2Int startingTile;
         private AvailableTiles[,] generatedLevel;
         private List<Vector2Int> itemPositions;
         private Vector2Int spawnPosition;
+        private Vector2Int goalPosition;
 
         private void Start()
         {
@@ -55,7 +62,7 @@ namespace ProceduralGeneration
             itemPositions = new List<Vector2Int>();
             
             // Create agent
-            Agent agent = new Agent(startingTile, levelCapacity, random);
+            Agent agent = new Agent(startingTile, agentDirectionChance, agentRoomChance, levelCapacity, random);
             // Place starting tile
             generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground;
             spawnPosition = agent.Position;
@@ -79,7 +86,7 @@ namespace ProceduralGeneration
                 }
                 else
                 {
-                    agent.ChangeDirectionChance += 5;
+                    agent.ChangeDirectionChance += agentDirectionChance;
                 }
                 
                 // Place Room?
@@ -102,15 +109,19 @@ namespace ProceduralGeneration
                 }
                 else
                 {
-                    agent.AddRoomChance += 5;
+                    agent.AddRoomChance += agentRoomChance;
                 }
             }
+            goalPosition = agent.Position;
             
             // Populate Tilemap
             tilemapPopulator.Populate(generatedLevel);
             
             // Spawn Items
-            SpawnItems(itemPositions);
+            itemSpawner.SpawnItems(itemPositions, spawnPosition, random);
+                
+            // Spawn Goal
+            // todo: implement this here
         }
 
         private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
@@ -127,11 +138,6 @@ namespace ProceduralGeneration
             }
         }
 
-        private void SpawnItems(List<Vector2Int> spawnPositions)
-        {
-
-        }
-
         private void OnDrawGizmos()
         {
             // Item spots
@@ -144,6 +150,10 @@ namespace ProceduralGeneration
             // Player spawn
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 1);
+            
+            // Goal
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(new Vector3(goalPosition.x, goalPosition.y, 0), 1);
         }
     }
 

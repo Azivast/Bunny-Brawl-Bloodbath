@@ -8,8 +8,8 @@ namespace ProceduralGeneration
 {
     public class Agent
     {
-        public int ChangeDirectionChance = 5;
-        public int AddRoomChance = 5;
+        public int ChangeDirectionChance;
+        public int AddRoomChance;
 
         public Vector2Int Direction;
         public Vector2Int Position;
@@ -17,8 +17,10 @@ namespace ProceduralGeneration
         private Vector2Int levelBounds;
         private Random random;
 
-        public Agent(Vector2Int pos, Vector2Int levelBounds, Random random)
+        public Agent(Vector2Int pos, int directionChance, int roomChance, Vector2Int levelBounds, Random random)
         {
+            ChangeDirectionChance = directionChance;
+            AddRoomChance = roomChance;
             Position = pos;
             this.levelBounds = levelBounds;
             this.random = random;
