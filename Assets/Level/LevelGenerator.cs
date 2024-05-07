@@ -32,13 +32,13 @@ namespace ProceduralGeneration
         private Random random;
         private Vector2Int startingTile;
         private AvailableTiles[,] generatedLevel;
-        private List<Vector2Int> itemPositions;
-        private Vector2Int spawnPosition;
-        private Vector2Int goalPosition;
+        private List<Vector2> itemPositions;
+        private Vector2 spawnPosition;
+        private Vector2 goalPosition;
 
         private void Start()
         {
-            GenerateNew();
+            Generate();
         }
 
         public void GenerateNew()
@@ -59,13 +59,14 @@ namespace ProceduralGeneration
             generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y]; // todo: prettify this
             startingTile.x = levelCapacity.x/2;
             startingTile.y = levelCapacity.y/2;
-            itemPositions = new List<Vector2Int>();
-            
+            itemPositions = new List<Vector2>();
+            ClearChildren(); // remove old chests, items, etc
+
             // Create agent
             Agent agent = new Agent(startingTile, agentDirectionChance, agentRoomChance, levelCapacity, random);
             // Place starting tile
             generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground;
-            spawnPosition = agent.Position;
+            spawnPosition = agent.Position + tilemapPopulator.TileMiddleOffset;
 
             for (int i = 0; i < agentSteps; i++)
             {
@@ -81,7 +82,7 @@ namespace ProceduralGeneration
                     agent.ChangeDirectionChance = 0;
                     if (agent.RandomizeDirection()) // if 180 degree turn, save position as potential item spawn point
                     {
-                        itemPositions.Add(agent.Position);
+                        itemPositions.Add(agent.Position + tilemapPopulator.TileMiddleOffset);
                     }
                 }
                 else
@@ -112,16 +113,24 @@ namespace ProceduralGeneration
                     agent.AddRoomChance += agentRoomChance;
                 }
             }
-            goalPosition = agent.Position;
+            goalPosition = agent.Position + tilemapPopulator.TileMiddleOffset;
             
             // Populate Tilemap
             tilemapPopulator.Populate(generatedLevel);
             
             // Spawn Items
-            itemSpawner.SpawnItems(itemPositions, spawnPosition, random);
+            itemSpawner.SpawnItems(itemPositions, spawnPosition, random, transform);
                 
             // Spawn Goal
             // todo: implement this here
+        }
+
+        private void ClearChildren()
+        {
+            for (int i = transform.childCount-1; i >= 0; i--)
+            {
+                DestroyImmediate(transform.GetChild(i).gameObject);
+            }
         }
 
         private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
@@ -144,16 +153,16 @@ namespace ProceduralGeneration
             foreach (var pos in itemPositions)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 1);
+                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.3f);
             }
 
             // Player spawn
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 1);
+            Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 0.3f);
             
             // Goal
             Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(new Vector3(goalPosition.x, goalPosition.y, 0), 1);
+            Gizmos.DrawSphere(new Vector3(goalPosition.x, goalPosition.y, 0), 0.3f);
         }
     }
 
