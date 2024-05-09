@@ -8,32 +8,51 @@ namespace ProceduralGeneration
 {
     public class Agent
     {
+        public int MaxSteps;
         public int ChangeDirectionChance;
         public int AddRoomChance;
+        public int NewAgentChance;
+
 
         public Vector2Int Direction;
         public Vector2Int Position;
 
         private Vector2Int levelBounds;
         private Random random;
+        private int stepsTaken = 0;
 
-        public Agent(Vector2Int pos, int directionChance, int roomChance, Vector2Int levelBounds, Random random)
+        public Agent(Vector2Int pos, int maxSteps, int directionChance, int roomChance, int newAgentChance, Vector2Int levelBounds, Random random)
         {
             ChangeDirectionChance = directionChance;
             AddRoomChance = roomChance;
+            MaxSteps = maxSteps;
+            NewAgentChance = newAgentChance;
             Position = pos;
             this.levelBounds = levelBounds;
             this.random = random;
             RandomizeDirection();
         }
 
-        public void Move()
+        /// <summary>
+        /// Returns true if agent has reached the maximum steps
+        /// </summary>
+        /// <returns></returns>
+        public bool Move()
         {
             while (!CheckMove())
             {
                 RandomizeDirection();
             }
-            Position += Direction;
+            if (stepsTaken > MaxSteps)
+            {
+                return false;
+            }
+            else
+            {
+                Position += Direction;
+                stepsTaken++;
+                return true;
+            }
         }
 
         private bool CheckMove()

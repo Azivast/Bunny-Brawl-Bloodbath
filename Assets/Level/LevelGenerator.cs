@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SearchService;
@@ -18,12 +19,14 @@ namespace ProceduralGeneration
         }
         [Header("Level Settings")]
         [SerializeField] private Vector2Int levelCapacity = new Vector2Int(1000,1000);
+        [SerializeField] private int numberOfFloors = 110;
         [SerializeField] private int minRoomSize = 3;
         [SerializeField] private int maxRoomSize = 7;
         [SerializeField] private int seed = 1234567;
         [Header("Agent Settings")]
         [SerializeField] private int agentDirectionChance = 5;
         [SerializeField] private int agentRoomChance = 5;
+        [SerializeField] private int agentDuplicateChance = 1;
         [SerializeField] private int agentSteps = 10;
         [Header("Components")]
         [SerializeField] private TilemapPopulator tilemapPopulator = new TilemapPopulator();
@@ -35,6 +38,8 @@ namespace ProceduralGeneration
         private List<Vector2> itemPositions;
         private Vector2 spawnPosition;
         private Vector2 goalPosition;
+        private List<Agent> agents = new List<Agent>();
+        private int floorsPlaced;
 
         private void Start()
         {
@@ -60,60 +65,90 @@ namespace ProceduralGeneration
             startingTile.x = levelCapacity.x/2;
             startingTile.y = levelCapacity.y/2;
             itemPositions = new List<Vector2>();
+            floorsPlaced = 0;
+            agents.Clear();
             ClearChildren(); // remove old chests, items, etc
 
             // Create agent
-            Agent agent = new Agent(startingTile, agentDirectionChance, agentRoomChance, levelCapacity, random);
+            Agent startAgent = new Agent(startingTile, 1000000, agentDirectionChance, agentRoomChance, agentDuplicateChance, levelCapacity, random);// todo replace 1000000 with proper variable
+            agents.Add(startAgent);
             // Place starting tile
-            generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground;
-            spawnPosition = agent.Position + tilemapPopulator.TileMiddleOffset;
+            generatedLevel[startAgent.Position.x, startAgent.Position.y] = AvailableTiles.Ground;
+            spawnPosition = startAgent.Position + tilemapPopulator.TileMiddleOffset;
 
-            for (int i = 0; i < agentSteps; i++)
+            while (floorsPlaced <= numberOfFloors)
             {
-                agent.Move();
-                
-                // Place tile
-                generatedLevel[agent.Position.x, agent.Position.y] = AvailableTiles.Ground; // replace with function that verifies if within array
-
-                // Change direction?
-                int newDirectionChance = random.Next(100);
-                if (newDirectionChance < agent.ChangeDirectionChance)
+                for (var i = agents.Count-1; i > 0; i++)
                 {
-                    agent.ChangeDirectionChance = 0;
-                    if (agent.RandomizeDirection()) // if 180 degree turn, save position as potential item spawn point
+                    var agent = agents[i];
+                    if (agent.Move() == false) // max step already taken
                     {
-                        itemPositions.Add(agent.Position + tilemapPopulator.TileMiddleOffset);
+                        agents.Remove(agent);
+                        continue;
                     }
-                }
-                else
-                {
-                    agent.ChangeDirectionChance += agentDirectionChance;
-                }
-                
-                // Place Room?
-                int newRoomChance = random.Next(100);
-                if (newRoomChance < agent.AddRoomChance)
-                {
-                    Vector2Int roomSize = new Vector2Int(random.Next(minRoomSize, maxRoomSize + 1), random.Next(minRoomSize, maxRoomSize + 1));
-                    Vector2Int startPos = agent.Position - (roomSize / 2);
 
-                    // Place room centered around agent
-                    for (int y = 0; y < roomSize.y; y++)
+                    // Place tile
+                    generatedLevel[agent.Position.x, agent.Position.y] =
+                        AvailableTiles.Ground; // replace with function that verifies if within array
+                    floorsPlaced++;
+
+                    // Change direction?
+                    int newDirectionChance = random.Next(100);
+                    if (newDirectionChance < agent.ChangeDirectionChance)
                     {
-                        for (int x = 0; x <  roomSize.x; x++)
+                        agent.ChangeDirectionChance = 0;
+                        if (agent.RandomizeDirection()) // if 180 degree turn, save position as potential item spawn point
                         {
-                            TryPlaceTile(startPos + new Vector2Int(x, y), AvailableTiles.Ground);
+                            itemPositions.Add(agent.Position + tilemapPopulator.TileMiddleOffset);
                         }
                     }
-                    
-                    agent.AddRoomChance = 0;
-                }
-                else
-                {
-                    agent.AddRoomChance += agentRoomChance;
+                    else
+                    {
+                        agent.ChangeDirectionChance += agentDirectionChance;
+                    }
+
+                    // Place Room?
+                    int newRoomChance = random.Next(100);
+                    if (newRoomChance < agent.AddRoomChance)
+                    {
+                        Vector2Int roomSize = new Vector2Int(random.Next(minRoomSize, maxRoomSize + 1),
+                            random.Next(minRoomSize, maxRoomSize + 1));
+                        Vector2Int startPos = agent.Position - (roomSize / 2);
+
+                        // Place room centered around agent
+                        for (int y = 0; y < roomSize.y; y++)
+                        {
+                            for (int x = 0; x < roomSize.x; x++)
+                            {
+                                TryPlaceTile(startPos + new Vector2Int(x, y), AvailableTiles.Ground);
+                            }
+                        }
+
+                        agent.AddRoomChance = 0;
+                    }
+                    else
+                    {
+                        agent.AddRoomChance += agentRoomChance;
+                    }
+
+                    // Spawn new agent?
+                    int newAgentChance = random.Next(100);
+                    if (newAgentChance < agent.NewAgentChance)
+                    {
+                        // Spawn new agent.
+                        Agent newAgent = new Agent(
+                            agent.Position,
+                            agentSteps,
+                            agentDirectionChance,
+                            agentRoomChance,
+                            agentDuplicateChance,
+                            levelCapacity,
+                            random);
+                        agents.Add(startAgent);
+                    }
                 }
             }
-            goalPosition = agent.Position + tilemapPopulator.TileMiddleOffset;
+            goalPosition = agents[0].Position + tilemapPopulator.TileMiddleOffset;
             
             // Populate Tilemap
             tilemapPopulator.Populate(generatedLevel);
