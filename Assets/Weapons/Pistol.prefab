@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: AmmoType
       value: 
       objectReference: {fileID: 11400000, guid: 6dbd622507657474694b352fb7fe33ab, type: 2}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7837799596735370733, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: m_Name
       value: Pistol

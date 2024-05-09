@@ -41,6 +41,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
     private void Update() {
         Aim();
+        if (fire.action.IsPressed()) activeWeaponBehaviour.Shoot(bulletLayer);
     }
 
     private void ChangeToWeapon(int index) {
@@ -62,7 +63,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void OnFire(InputAction.CallbackContext context) {
-        activeWeaponBehaviour.Shoot(bulletLayer);
+        //if (context.ReadValueAsButton()) activeWeaponBehaviour.Shoot(bulletLayer); // todo: cleanup
     }
     
     private void CycleWeapon(InputAction.CallbackContext context) {

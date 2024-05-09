@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SearchService;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
@@ -30,7 +31,7 @@ namespace ProceduralGeneration
         [SerializeField] private int agentSteps = 10;
         [Header("Components")]
         [SerializeField] private TilemapPopulator tilemapPopulator = new TilemapPopulator();
-        [SerializeField] private LevelItemSpawner itemSpawner = new LevelItemSpawner();
+        [SerializeField] private LevelChestSpawner chestSpawner = new LevelChestSpawner();
         [SerializeField] private LevelEnemySpawner enemySpawner = new LevelEnemySpawner();
         
         private Vector2Int startingTile;
@@ -45,14 +46,14 @@ namespace ProceduralGeneration
 
         private void Start()
         {
-            itemSpawner.ClearObjects();
+            chestSpawner.ClearObjects();
             enemySpawner.ClearEnemies();
             Generate();
         }
 
         private void OnDestroy()
         {
-            itemSpawner.ClearObjects();
+            chestSpawner.ClearObjects();
             enemySpawner.ClearEnemies();
         }
 
@@ -77,7 +78,7 @@ namespace ProceduralGeneration
             ammoChestPositions = new List<Vector2>();
             floorsPlaced = 0;
             agents.Clear();
-            itemSpawner.ClearObjects();
+            chestSpawner.ClearObjects();
             enemySpawner.ClearEnemies();
         }
         
@@ -180,8 +181,8 @@ namespace ProceduralGeneration
             tilemapPopulator.Populate(generatedLevel);
             
             // Spawn Items
-            itemSpawner.SpawnAmmoChests(ammoChestPositions, spawnPosition);
-            itemSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition);
+            chestSpawner.SpawnAmmoChests(ammoChestPositions, spawnPosition);
+            chestSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition);
             
             // Spawn Enemies
             enemySpawner.SpawnEnemies(generatedLevel, spawnPosition, tilemapPopulator.TileMiddleOffset);

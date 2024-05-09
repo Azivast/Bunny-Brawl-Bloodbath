@@ -130,6 +130,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6678877243556975699, guid: 967046097781c644c909d5a9737f5634, type: 3}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: firingPositions.Array.size
       value: 3
       objectReference: {fileID: 0}

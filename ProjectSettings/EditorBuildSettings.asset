@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Menus/MainMenu.unity
     guid: 2fa103eb73efce94faa22ccbeafe1b87
   - enabled: 1
-    path: Assets/Level/Scenes/Exampel Level.unity
-    guid: 6d2530a97b3d2b7449c3dd4d96e8ed7b
+    path: Assets/Level/Scenes/ProceduralGeneration.unity
+    guid: c88fa60ffd73ef8409c33dfb859b89c5
   - enabled: 1
     path: Assets/Menus/Loose.unity
     guid: 1e72146a4c8965243a217e7cc0d807ad
