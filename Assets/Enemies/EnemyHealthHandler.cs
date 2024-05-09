@@ -15,12 +15,12 @@ public class EnemyHealthHandler : MonoBehaviour {
     
     void Awake() {
         target = GetComponent<TargetBehaviour>();
-        currentHealth = maxHealth;
+        enemiesAliveCollection.Register(gameObject);
     }
 
     private void OnEnable() {
         target.OnAttacked += Hit;
-        enemiesAliveCollection.Register(gameObject);
+        currentHealth = maxHealth;
     }
 
     private void OnDisable() {

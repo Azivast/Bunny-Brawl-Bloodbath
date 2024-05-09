@@ -18,7 +18,10 @@ public class GameBehaviour : MonoBehaviour {
         foreach (var ammo in ammoTypes) {
             ammo.Reset();
         }
-        
+    }
+
+    private void Start()
+    {
         enemiesAlive.OnCollectionEmpty += LevelComplete;
         playerHealth.OnPlayerDied += GameOver;
         playerHealth.Reset();

@@ -99,7 +99,7 @@ namespace ProceduralGeneration
                     var agent = agents[i];
                     if (agent.Move() == false) // max step already taken
                     {
-                        weaponChestPostitions.Add(agent.Position);
+                        weaponChestPostitions.Add(agent.Position + tilemapPopulator.TileMiddleOffset);
                         agents.Remove(agent);
                         continue;
                     }
@@ -173,7 +173,7 @@ namespace ProceduralGeneration
             // Remove remaining agents
             for (var i = agents.Count - 1; i >= 0; i--)
             {
-                weaponChestPostitions.Add(agents[i].Position);
+                weaponChestPostitions.Add(agents[i].Position + tilemapPopulator.TileMiddleOffset);
             }
 
             // Populate Tilemap
@@ -184,7 +184,7 @@ namespace ProceduralGeneration
             itemSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition);
             
             // Spawn Enemies
-            enemySpawner.SpawnEnemies(generatedLevel, spawnPosition);
+            enemySpawner.SpawnEnemies(generatedLevel, spawnPosition, tilemapPopulator.TileMiddleOffset);
         }
         private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
         {

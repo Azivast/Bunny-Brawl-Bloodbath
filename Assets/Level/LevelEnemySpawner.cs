@@ -17,10 +17,9 @@ namespace ProceduralGeneration
         [SerializeField] private double spawnChance = 1; 
         [SerializeField] private int minDistanceToSpawn = 5;
         [SerializeField] private Transform parent;
-        [SerializeField] private Vector3 tileMiddleOffset = new Vector3(0.5f, 0.5f);
         private int enemiesSpawned;
 
-        public void SpawnEnemies(LevelGenerator.AvailableTiles[,] levelData, Vector2 playerSpawn)
+        public void SpawnEnemies(LevelGenerator.AvailableTiles[,] levelData, Vector2 playerSpawn, Vector2 offset)
         {
             while (enemiesSpawned < maxEnemies)
             {
@@ -36,7 +35,7 @@ namespace ProceduralGeneration
                             double chance = ConstRandom.Random.NextDouble()*100; // NextDouble returns [0,1]*100=[0,100]
                             if (chance < spawnChance)
                             {
-                                Object.Instantiate(enemies[ConstRandom.Random.Next(enemies.Count)], new Vector3(x, y) + tileMiddleOffset, Quaternion.identity, parent);
+                                Object.Instantiate(enemies[ConstRandom.Random.Next(enemies.Count)], new Vector3(x, y) + (Vector3)offset, Quaternion.identity, parent);
                                 enemiesSpawned++;
                                 if (enemiesSpawned >= maxEnemies) return;
                             }
