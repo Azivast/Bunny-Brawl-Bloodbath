@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: pickRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: objects.Array.size
       value: 2
       objectReference: {fileID: 0}

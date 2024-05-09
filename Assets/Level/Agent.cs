@@ -18,10 +18,9 @@ namespace ProceduralGeneration
         public Vector2Int Position;
 
         private Vector2Int levelBounds;
-        private Random random;
         private int stepsTaken = 0;
 
-        public Agent(Vector2Int pos, int maxSteps, int directionChance, int roomChance, int newAgentChance, Vector2Int levelBounds, Random random)
+        public Agent(Vector2Int pos, int maxSteps, int directionChance, int roomChance, int newAgentChance, Vector2Int levelBounds)
         {
             ChangeDirectionChance = directionChance;
             AddRoomChance = roomChance;
@@ -29,7 +28,6 @@ namespace ProceduralGeneration
             NewAgentChance = newAgentChance;
             Position = pos;
             this.levelBounds = levelBounds;
-            this.random = random;
             RandomizeDirection();
         }
 
@@ -74,7 +72,7 @@ namespace ProceduralGeneration
 
         public bool RandomizeDirection()
         {
-            Vector2Int newDirection = random.Next(4) switch
+            Vector2Int newDirection = ConstRandom.Random.Next(4) switch
             {
                 0 => Vector2Int.left,
                 1 => Vector2Int.up,

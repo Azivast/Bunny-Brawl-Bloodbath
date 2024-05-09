@@ -31,46 +31,62 @@ namespace ProceduralGeneration
         [Header("Components")]
         [SerializeField] private TilemapPopulator tilemapPopulator = new TilemapPopulator();
         [SerializeField] private LevelItemSpawner itemSpawner = new LevelItemSpawner();
+        [SerializeField] private LevelEnemySpawner enemySpawner = new LevelEnemySpawner();
         
-        private Random random;
         private Vector2Int startingTile;
         private AvailableTiles[,] generatedLevel;
-        private List<Vector2> itemPositions;
-        private Vector2 spawnPosition;
-        private Vector2 goalPosition;
+        
         private List<Agent> agents = new List<Agent>();
         private int floorsPlaced;
+        private List<Vector2> weaponChestPostitions;
+        private List<Vector2> ammoChestPositions;
+        private Vector2 spawnPosition;
+        private Vector2 goalPosition;
 
         private void Start()
         {
+            itemSpawner.ClearObjects();
+            enemySpawner.ClearEnemies();
             Generate();
+        }
+
+        private void OnDestroy()
+        {
+            itemSpawner.ClearObjects();
+            enemySpawner.ClearEnemies();
         }
 
         public void GenerateNew()
         {
-            PrepareGeneration();
+            RandomizeSeed();
             Generate();
         }
 
-        private void PrepareGeneration()
+        private void RandomizeSeed()
         {
             seed = UnityEngine.Random.Range(0, 1000000);
+        }
+
+        private void ResetGeneration()
+        {
+            ConstRandom.Random = new Random(seed);
+            generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y];
+            startingTile.x = levelCapacity.x/2;
+            startingTile.y = levelCapacity.y/2;
+            weaponChestPostitions = new List<Vector2>();
+            ammoChestPositions = new List<Vector2>();
+            floorsPlaced = 0;
+            agents.Clear();
+            itemSpawner.ClearObjects();
+            enemySpawner.ClearEnemies();
         }
         
         public void Generate()
         {
-            // Setup
-            random = new Random(seed);
-            generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y]; // todo: prettify this
-            startingTile.x = levelCapacity.x/2;
-            startingTile.y = levelCapacity.y/2;
-            itemPositions = new List<Vector2>();
-            floorsPlaced = 0;
-            agents.Clear();
-            ClearChildren(); // remove old chests, items, etc
+            ResetGeneration();
 
             // Create agent
-            Agent startAgent = new Agent(startingTile, 1000000, agentDirectionChance, agentRoomChance, agentDuplicateChance, levelCapacity, random);// todo replace 1000000 with proper variable
+            Agent startAgent = new Agent(startingTile, 1000000, agentDirectionChance, agentRoomChance, agentDuplicateChance, levelCapacity);// todo replace 1000000 with proper variable
             agents.Add(startAgent);
             // Place starting tile
             generatedLevel[startAgent.Position.x, startAgent.Position.y] = AvailableTiles.Ground;
@@ -78,28 +94,34 @@ namespace ProceduralGeneration
 
             while (floorsPlaced <= numberOfFloors)
             {
-                for (var i = agents.Count-1; i > 0; i++)
+                for (var i = agents.Count-1; i >= 0; i--)
                 {
                     var agent = agents[i];
                     if (agent.Move() == false) // max step already taken
                     {
+                        weaponChestPostitions.Add(agent.Position);
                         agents.Remove(agent);
                         continue;
                     }
 
                     // Place tile
-                    generatedLevel[agent.Position.x, agent.Position.y] =
-                        AvailableTiles.Ground; // replace with function that verifies if within array
-                    floorsPlaced++;
+                    if (generatedLevel[agent.Position.x, agent.Position.y] !=
+                        AvailableTiles.Ground)
+                    {
+                        floorsPlaced++;
+                        generatedLevel[agent.Position.x, agent.Position.y] =
+                            AvailableTiles.Ground; // replace with function that verifies if within array
+
+                    }
 
                     // Change direction?
-                    int newDirectionChance = random.Next(100);
+                    int newDirectionChance = ConstRandom.Random.Next(100);
                     if (newDirectionChance < agent.ChangeDirectionChance)
                     {
                         agent.ChangeDirectionChance = 0;
-                        if (agent.RandomizeDirection()) // if 180 degree turn, save position as potential item spawn point
+                        if (agent.RandomizeDirection()) // if 180 degree turn, save position as potential ammoChest spawn point
                         {
-                            itemPositions.Add(agent.Position + tilemapPopulator.TileMiddleOffset);
+                            ammoChestPositions.Add(agent.Position + tilemapPopulator.TileMiddleOffset);
                         }
                     }
                     else
@@ -108,11 +130,11 @@ namespace ProceduralGeneration
                     }
 
                     // Place Room?
-                    int newRoomChance = random.Next(100);
+                    int newRoomChance = ConstRandom.Random.Next(100);
                     if (newRoomChance < agent.AddRoomChance)
                     {
-                        Vector2Int roomSize = new Vector2Int(random.Next(minRoomSize, maxRoomSize + 1),
-                            random.Next(minRoomSize, maxRoomSize + 1));
+                        Vector2Int roomSize = new Vector2Int(ConstRandom.Random.Next(minRoomSize, maxRoomSize + 1),
+                            ConstRandom.Random.Next(minRoomSize, maxRoomSize + 1));
                         Vector2Int startPos = agent.Position - (roomSize / 2);
 
                         // Place room centered around agent
@@ -132,7 +154,7 @@ namespace ProceduralGeneration
                     }
 
                     // Spawn new agent?
-                    int newAgentChance = random.Next(100);
+                    int newAgentChance = ConstRandom.Random.Next(100);
                     if (newAgentChance < agent.NewAgentChance)
                     {
                         // Spawn new agent.
@@ -142,32 +164,28 @@ namespace ProceduralGeneration
                             agentDirectionChance,
                             agentRoomChance,
                             agentDuplicateChance,
-                            levelCapacity,
-                            random);
-                        agents.Add(startAgent);
+                            levelCapacity);
+                        agents.Add(newAgent);
                     }
                 }
             }
             goalPosition = agents[0].Position + tilemapPopulator.TileMiddleOffset;
-            
+            // Remove remaining agents
+            for (var i = agents.Count - 1; i >= 0; i--)
+            {
+                weaponChestPostitions.Add(agents[i].Position);
+            }
+
             // Populate Tilemap
             tilemapPopulator.Populate(generatedLevel);
             
             // Spawn Items
-            itemSpawner.SpawnItems(itemPositions, spawnPosition, random, transform);
-                
-            // Spawn Goal
-            // todo: implement this here
+            itemSpawner.SpawnAmmoChests(ammoChestPositions, spawnPosition);
+            itemSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition);
+            
+            // Spawn Enemies
+            enemySpawner.SpawnEnemies(generatedLevel, spawnPosition);
         }
-
-        private void ClearChildren()
-        {
-            for (int i = transform.childCount-1; i >= 0; i--)
-            {
-                DestroyImmediate(transform.GetChild(i).gameObject);
-            }
-        }
-
         private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
         {
             if (position.x >= levelCapacity.x-1 || position.x < 1 ||
@@ -184,20 +202,27 @@ namespace ProceduralGeneration
 
         private void OnDrawGizmos()
         {
-            // Item spots
-            foreach (var pos in itemPositions)
+            // Weapon chests
+            foreach (var pos in weaponChestPostitions)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.3f);
+                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
+            }
+            
+            // Ammo chests
+            foreach (var pos in ammoChestPositions)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
             }
 
             // Player spawn
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 0.3f);
+            Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 0.5f);
             
             // Goal
             Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(new Vector3(goalPosition.x, goalPosition.y, 0), 0.3f);
+            Gizmos.DrawSphere(new Vector3(goalPosition.x, goalPosition.y, 0), 0.5f);
         }
     }
 
