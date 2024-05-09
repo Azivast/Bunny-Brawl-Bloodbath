@@ -53,11 +53,10 @@ public class CameraController : MonoBehaviour {
         var target = targetTransform.position + offset;
         target.z = initialZ;
 
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref currentVelocity, smoothTime) + CameraShake.ShakeOffset;
     }
     
     private void Update() {
         UpdateCameraPosition();
     }
-
 }

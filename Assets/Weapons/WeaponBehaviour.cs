@@ -15,6 +15,8 @@ public class WeaponBehaviour : MonoBehaviour {
     [SerializeField] private UnityEvent onFire;
     [SerializeField] private UnityEvent onPostFire;
     [SerializeField] private float postFireDelay = 0.1f;
+    [SerializeField] private float shakeDuration = 0.1f;
+    [SerializeField] private float shakeIntensity = 0.05f;
     public bool InfiniteAmmo = false;
     
     private Quaternion rotation;
@@ -56,6 +58,7 @@ public class WeaponBehaviour : MonoBehaviour {
             bullet.layer = projectileLayer;
         }
         onFire.Invoke();
+        CameraShake.Shake(shakeDuration, shakeIntensity);
         StartCoroutine(PostShoot());
     }
     
