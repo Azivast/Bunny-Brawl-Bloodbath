@@ -30,36 +30,26 @@ namespace ProceduralGeneration
         
         private void Spawn(GameObject chest, List<Vector2> locations, Vector2 playerPos)
         {
-            List<Vector2> availableLocations = new List<Vector2>(locations);
+            List<Vector2> availableLocations = locations.Distinct().ToList(); // remove duplicate locations
 
-            for (int i = 0; i < maxNumberPerType; i++)
+            for (int i = 0; i < maxNumberPerType;)
             {
                 if (availableLocations.Count <= 0) break;
                 
                 // Find suitable location that isn't too close to player or occupied
-                Vector2 selectedLocation = Vector2.zero;
-                bool posOK;
-                int iteration = 0;
-                do // todo: this is broken
+                Vector2 selectedLocation = availableLocations[ConstRandom.Random.Next(availableLocations.Count)];
+                if ((selectedLocation - playerPos).magnitude < minDistanceToSpawn) continue;
+                if (spawnedPositions.Contains(selectedLocation))
                 {
-                    posOK = true;
-
-                    selectedLocation = availableLocations[ConstRandom.Random.Next(availableLocations.Count)];
-
-                    if ((selectedLocation - playerPos).magnitude < minDistanceToSpawn) posOK = false;
-                    foreach (var pos in spawnedPositions)
-                    {
-                        if ((selectedLocation - pos).magnitude < 0.1f) posOK = false;
-                    }
-
-                    iteration++;
-                } while (!posOK || iteration < 500); // iteration: prevent getting stuck in case there are no suitable positions
+                    availableLocations.Remove(selectedLocation);
+                    continue;
+                }
                 
                 // Spawn
-                availableLocations.Remove(selectedLocation);
-                selectedLocation = locations[ConstRandom.Random.Next(locations.Count())];
                 Object.Instantiate(chest, (Vector2)selectedLocation, Quaternion.identity, parent);
                 spawnedPositions.Add(selectedLocation);
+                availableLocations.Remove(selectedLocation);
+                i++;
             }
         }
 
