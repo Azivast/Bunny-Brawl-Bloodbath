@@ -11,6 +11,7 @@ public class GameBehaviour : MonoBehaviour {
     [SerializeField] private AmmoType[] ammoTypes;
     [SerializeField] private UnityEvent OnAllEnemiesKilled;
     [SerializeField] private UnityEvent OnPlayerDied;
+    [SerializeField] private GameObject portalPrefab;
 
     
     private void Awake() {
@@ -22,13 +23,13 @@ public class GameBehaviour : MonoBehaviour {
 
     private void Start()
     {
-        enemiesAlive.OnCollectionEmpty += LevelComplete;
+        enemiesAlive.OnCollectionEmptyGetLastPos += LevelComplete;
         playerHealth.OnPlayerDied += GameOver;
         playerHealth.Reset();
     }
 
     private void OnDisable() {
-        enemiesAlive.OnCollectionEmpty -= LevelComplete;
+        enemiesAlive.OnCollectionEmptyGetLastPos -= LevelComplete;
         playerHealth.OnPlayerDied -= GameOver;
     }
 
@@ -36,7 +37,8 @@ public class GameBehaviour : MonoBehaviour {
         OnPlayerDied.Invoke();
     }
     
-    private void LevelComplete() {
+    private void LevelComplete(Vector2 position) {
         OnAllEnemiesKilled.Invoke();
+        Instantiate(portalPrefab, position, Quaternion.identity);
     }
 }
