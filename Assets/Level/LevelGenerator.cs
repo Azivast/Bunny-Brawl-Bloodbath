@@ -42,7 +42,6 @@ namespace ProceduralGeneration
         private List<Vector2> weaponChestPostitions;
         private List<Vector2> ammoChestPositions;
         private Vector2 spawnPosition;
-        private Vector2 goalPosition;
 
         private void Start()
         {
@@ -143,7 +142,10 @@ namespace ProceduralGeneration
                         {
                             for (int x = 0; x < roomSize.x; x++)
                             {
-                                TryPlaceTile(startPos + new Vector2Int(x, y), AvailableTiles.Ground);
+                                if (TryPlaceTile(startPos + new Vector2Int(x, y), AvailableTiles.Ground))
+                                {
+                                    floorsPlaced++;
+                                }
                             }
                         }
 
@@ -170,7 +172,6 @@ namespace ProceduralGeneration
                     }
                 }
             }
-            goalPosition = agents[0].Position + tilemapPopulator.TileMiddleOffset;
             // Remove remaining agents
             for (var i = agents.Count - 1; i >= 0; i--)
             {
@@ -189,12 +190,16 @@ namespace ProceduralGeneration
         }
         private bool TryPlaceTile(Vector2Int position, AvailableTiles type)
         {
-            if (position.x >= levelCapacity.x-1 || position.x < 1 ||
+            if (position.x >= levelCapacity.x-1 || position.x < 1 || // out of bounds
                 position.y >= levelCapacity.y-1 || position.y < 1)
             {
                 return false;
             }
-            else
+            else if (generatedLevel[position.x, position.y] == type) // already placed
+            {
+                return false;
+            }
+            else // otherwise place tile
             {
                 generatedLevel[position.x, position.y] = type;
                 return true;
@@ -220,10 +225,6 @@ namespace ProceduralGeneration
             // Player spawn
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 0.5f);
-            
-            // Goal
-            Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(new Vector3(goalPosition.x, goalPosition.y, 0), 0.5f);
         }
     }
 
