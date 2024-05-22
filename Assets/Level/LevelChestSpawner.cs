@@ -38,7 +38,11 @@ namespace ProceduralGeneration
                 
                 // Find suitable location that isn't too close to player or occupied
                 Vector2 selectedLocation = availableLocations[ConstRandom.Random.Next(availableLocations.Count)];
-                if ((selectedLocation - playerPos).magnitude < minDistanceToSpawn) continue;
+                if ((selectedLocation - playerPos).magnitude < minDistanceToSpawn)
+                {
+                    availableLocations.Remove(selectedLocation);
+                    continue;
+                }
                 if (spawnedPositions.Contains(selectedLocation))
                 {
                     availableLocations.Remove(selectedLocation);
