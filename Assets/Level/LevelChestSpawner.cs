@@ -31,10 +31,10 @@ namespace ProceduralGeneration
         private void Spawn(GameObject chest, List<Vector2> locations, Vector2 playerPos)
         {
             List<Vector2> availableLocations = locations.Distinct().ToList(); // remove duplicate locations
-
+            
             for (int i = 0; i < maxNumberPerType;)
             {
-                if (availableLocations.Count <= 0) break;
+                if (availableLocations.Count <= 0) return;
                 
                 // Find suitable location that isn't too close to player or occupied
                 Vector2 selectedLocation = availableLocations[ConstRandom.Random.Next(availableLocations.Count)];

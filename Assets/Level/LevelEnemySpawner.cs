@@ -21,13 +21,21 @@ namespace ProceduralGeneration
 
         public void SpawnEnemies(LevelGenerator.AvailableTiles[,] levelData, Vector2 playerSpawn, Vector2 offset)
         {
-            while (enemiesSpawned < maxEnemies)
+            int attempts = 0; // Number of failed spawn attempts before function returns 
+            const int maxAttempts = 1000;
+            
+            while (enemiesSpawned < maxEnemies && attempts < maxAttempts)
             {
+                bool enemySpawnedThisIteration = false;
+                
                 for (var y = 0; y < levelData.GetLength(1); y++) // loop through y
                 {
                     for (var x = 0; x < levelData.GetLength(0); x++) // loop through x
                     {
-                        if ((playerSpawn - new Vector2(x, y)).magnitude < minDistanceToSpawn) break;
+                        if ((playerSpawn - new Vector2(x, y)).magnitude < minDistanceToSpawn)
+                        {
+                            continue;
+                        }
                     
                         var tile = levelData[x, y];
                         if (tile == LevelGenerator.AvailableTiles.Ground)
@@ -37,13 +45,17 @@ namespace ProceduralGeneration
                             {
                                 Object.Instantiate(enemies[ConstRandom.Random.Next(enemies.Count)], new Vector3(x, y) + (Vector3)offset, Quaternion.identity, parent);
                                 enemiesSpawned++;
+                                enemySpawnedThisIteration = true;
+                                
                                 if (enemiesSpawned >= maxEnemies) return;
                             }
                         }
                     }
                 }
+
+                if (enemySpawnedThisIteration == false) attempts++;
+                else attempts = 0;
             }
-            
         }
 
         public void ClearEnemies()
