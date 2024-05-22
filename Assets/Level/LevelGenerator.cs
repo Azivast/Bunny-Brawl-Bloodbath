@@ -47,7 +47,7 @@ namespace ProceduralGeneration
         {
             chestSpawner.ClearObjects();
             enemySpawner.ClearEnemies();
-            Generate();
+            GenerateNew();
         }
 
         private void OnDestroy()
@@ -208,23 +208,29 @@ namespace ProceduralGeneration
 
         private void OnDrawGizmos()
         {
-            // Weapon chests
-            foreach (var pos in weaponChestPostitions)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
-            }
-            
-            // Ammo chests
-            foreach (var pos in ammoChestPositions)
-            {
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
-            }
-
             // Player spawn
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 0.5f);
+            
+            // Weapon chests
+            if (weaponChestPostitions != null)
+            {
+                foreach (var pos in weaponChestPostitions)
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
+                }
+            }
+            
+            // Ammo chests
+            if (ammoChestPositions != null)
+            {
+                foreach (var pos in ammoChestPositions)
+                {
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
+                }
+            }
         }
     }
 

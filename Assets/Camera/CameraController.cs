@@ -12,12 +12,12 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private float cameraDistance = 2f;
     [SerializeField] private float smoothTime = 0.2f;
     [SerializeField] private Transform targetTransform;
-    private Camera camera;
+    private Camera cam;
     private float initialZ;
     private Vector3 currentVelocity;
 
     private void Start() {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
 
         initialZ = transform.position.z;
         
@@ -35,13 +35,13 @@ public class CameraController : MonoBehaviour {
 
     public Vector3 MouseWorldPosition() {
         var mousePosition = look.action.ReadValue<Vector2>();
-        var mousePositionZ = camera.farClipPlane * .5f;
+        var mousePositionZ = cam.farClipPlane * .5f;
         
-        return camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, mousePositionZ));
+        return cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, mousePositionZ));
     }
     
     public Vector3 MouseViewPosition() {
-        var mousePosition = camera.ScreenToViewportPoint(look.action.ReadValue<Vector2>());
+        var mousePosition = cam.ScreenToViewportPoint(look.action.ReadValue<Vector2>());
         mousePosition -= Vector3.one * 0.5f; // 0,0 as middle of screen
         mousePosition *= 2; // -1 to 1
 

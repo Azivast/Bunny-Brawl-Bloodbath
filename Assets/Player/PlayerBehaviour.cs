@@ -13,12 +13,12 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField] private PlayerHealthObject health;
     [SerializeField] private InteractHandlerObject interactHandler;
     
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private Vector2 velocity;
     private TargetBehaviour targetBehaviour;
     
     private void Awake() {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         targetBehaviour = GetComponent<TargetBehaviour>();
     }
 
@@ -44,6 +44,6 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        rigidbody.velocity = move.action.ReadValue<Vector2>() * speed;
+        rb.velocity = move.action.ReadValue<Vector2>() * speed;
     }
 }

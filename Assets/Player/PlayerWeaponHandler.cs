@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerWeaponHandler : MonoBehaviour {
     [SerializeField] private EquippedWeaponsObject weapons;
     [SerializeField] private Transform weaponPosition;
-    [SerializeField] private CameraController camera;
+    [SerializeField] private CameraController cam;
     [SerializeField] private InputActionReference fire, switchWeapon;
     
     private GameObject activeWeapon;
@@ -36,7 +36,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     }
 
     private void Aim() {
-        activeWeaponBehaviour.Target = camera.MouseWorldPosition();
+        activeWeaponBehaviour.Target = cam.MouseWorldPosition();
     }
 
     private void Update() {
