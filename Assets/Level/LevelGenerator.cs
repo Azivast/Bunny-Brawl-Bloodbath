@@ -233,26 +233,5 @@ namespace ProceduralGeneration
             }
         }
     }
-
-    [CustomEditor(typeof(LevelGenerator))]
-    public class LevelGenerationEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            DrawDefaultInspector();
-
-            if (GUILayout.Button("Generate"))
-            {
-                LevelGenerator generator = target as LevelGenerator;
-                generator.Generate();
-            }
-            
-            if (GUILayout.Button("Randomize New"))
-            {
-                LevelGenerator generator = target as LevelGenerator;
-                generator.GenerateNew();
-            }
-        }
-    }
 }
 
