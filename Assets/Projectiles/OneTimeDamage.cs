@@ -13,11 +13,19 @@ public class OneTimeDamage : MonoBehaviour
     private int currentFrame = 0;
 
     
-    private void OnTriggerStay2D(Collider2D other) {
-        if (other.gameObject.TryGetComponent(out TargetBehaviour target)) {
+    private void OnTriggerStay2D(Collider2D other) 
+    {
+        if (other.gameObject.TryGetComponent(out TargetBehaviour target))
+        {
             target.Attack(amount);
-            Destroy(gameObject);
+
+            if (other.gameObject.TryGetComponent(out HitParticle hitParticle))
+            {
+                Instantiate(hitParticle.Particle, other.transform.position, transform.rotation);
+            }
         }
+
+        Destroy(gameObject);
     }
 
     private void FixedUpdate() {

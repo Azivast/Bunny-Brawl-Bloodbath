@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 468719331699266383}
   - component: {fileID: 468719331699266382}
   - component: {fileID: 6286772249118617067}
+  - component: {fileID: 4553422611959525124}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -31,15 +32,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468719331699266381}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 35771812137876262}
-  - {fileID: 3565608722244165873}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &468719331699266386
 MonoBehaviour:
@@ -56,18 +56,6 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4094431121491196350}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6286772249118617067}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: PlayOneShot
@@ -99,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons: {fileID: 11400000, guid: 76045441a5bb6b240b29c6b6c9c2fa0a, type: 2}
   weaponPosition: {fileID: 35771812137876262}
-  camera: {fileID: 0}
+  cam: {fileID: 0}
   fire: {fileID: -621631156938017560, guid: d1883ee3fa76a554a966a328da270392, type: 3}
   switchWeapon: {fileID: 217943852245954930, guid: d1883ee3fa76a554a966a328da270392, type: 3}
 --- !u!114 &3449549980980382734
@@ -273,6 +261,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -287,6 +281,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -389,6 +402,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4553422611959525124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395b5ae6eea135b699b12ac997a89fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Particle: {fileID: 8801916787056940184, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
 --- !u!1 &5783099774653898744
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,78 +438,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5783099774653898744}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.173, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 468719331699266387}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1038689557198004586
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 468719331699266387}
-    m_Modifications:
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8801916787056940184, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-      propertyPath: m_Name
-      value: BloodEmitter
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
---- !u!4 &3565608722244165873 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4544620877090914715, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-  m_PrefabInstance: {fileID: 1038689557198004586}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &4094431121491196350 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3943039802872994004, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
-  m_PrefabInstance: {fileID: 1038689557198004586}
-  m_PrefabAsset: {fileID: 0}
