@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private InputActionReference look;
     [SerializeField] private Texture2D crosshairTexture;
     [SerializeField] private float cameraDistance = 2f;
+    [SerializeField] private float maxDistance = 4f;
     [SerializeField] private float smoothTime = 0.2f;
     [SerializeField] private Transform targetTransform;
     private Camera cam;
@@ -50,6 +51,10 @@ public class CameraController : MonoBehaviour {
     
     private void UpdateCameraPosition() {
         var offset = MouseViewPosition() * cameraDistance;
+        if (offset.magnitude > maxDistance)
+        {
+            offset = offset.normalized*maxDistance;
+        }
         var target = targetTransform.position + offset;
         target.z = initialZ;
 
