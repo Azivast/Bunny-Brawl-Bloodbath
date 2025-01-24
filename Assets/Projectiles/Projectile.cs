@@ -7,13 +7,20 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
     [SerializeField] private int speed = 5;
     [SerializeField] private int damage = 1;
+    [SerializeField] private int bounces = 0;
     [SerializeField] private GameObject defaultHitParticle;
 
     private Rigidbody2D rb;
+    private int bouncesLeft;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
+        bouncesLeft = bounces;
+    }
+
+    private void FixedUpdate() {
+        rb.velocity = transform.forward * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D col) 
@@ -42,7 +49,16 @@ public class Projectile : MonoBehaviour {
         }
 
 
+        if (bouncesLeft <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            transform.forward = Vector2.Reflect(transform.forward, col.contacts[0].normal);
+            bouncesLeft--;
+            rb.velocity = transform.forward * speed;
+        }
 
-        Destroy(gameObject);
     }
 }
