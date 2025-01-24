@@ -31,7 +31,7 @@ public class EnemyHealthHandler : MonoBehaviour {
     private void Hit(int damage) {
         OnHit.Invoke();
         currentHealth -= damage;
-        HitStop.Stop(0.05f);
+        //HitStop.Stop(0.05f);
         if (currentHealth <= 0) {
             Kill();
         }
