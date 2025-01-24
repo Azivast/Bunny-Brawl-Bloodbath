@@ -49,16 +49,16 @@ public class Projectile : MonoBehaviour {
         }
 
 
-        if (bouncesLeft <= 0)
-        {
+        // if (bouncesLeft <= 0)
+        // {
             Destroy(gameObject);
-        }
-        else
-        {
-            transform.forward = Vector2.Reflect(transform.forward, col.contacts[0].normal);
-            bouncesLeft--;
-            rb.velocity = transform.forward * speed;
-        }
+        // }
+        // else
+        // {
+        //     transform.forward = Vector2.Reflect(transform.forward, col.contacts[0].normal);
+        //     bouncesLeft--;
+        //     rb.velocity = transform.forward * speed;
+        // }
 
     }
 }
