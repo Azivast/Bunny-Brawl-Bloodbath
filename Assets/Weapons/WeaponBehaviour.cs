@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class WeaponBehaviour : MonoBehaviour {
+    public string WeaponName;
     [SerializeField] private GameObject projectile;
     public AmmoType AmmoType;
     [SerializeField] private Transform[] firingPositions;

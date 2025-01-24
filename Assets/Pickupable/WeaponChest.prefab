@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
@@ -75,6 +76,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 5710472372599331833}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_Color.b
       value: 0.5630168
@@ -92,4 +129,12 @@ PrefabInstance:
       value: WeaponChest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+--- !u!1 &5710472372599331833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5256606645199122107, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+  m_PrefabInstance: {fileID: 561995279758931266}
+  m_PrefabAsset: {fileID: 0}

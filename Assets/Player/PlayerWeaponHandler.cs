@@ -6,6 +6,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     [SerializeField] private Transform weaponPosition;
     [SerializeField] private CameraController cam;
     [SerializeField] private InputActionReference fire, switchWeapon;
+    [SerializeField] private PopupSpawner popupSpawner;
     
     private GameObject activeWeapon;
     private WeaponBehaviour activeWeaponBehaviour;
@@ -56,10 +57,11 @@ public class PlayerWeaponHandler : MonoBehaviour {
         activeWeapon.SetActive(true);
     }
 
-    private void OnWeaponEquipped(GameObject _) {
+    private void OnWeaponEquipped(GameObject gameObject) {
         activeWeapon.transform.parent = null; // Drop active weapon
         activeWeapon.transform.rotation = Quaternion.identity;
         ChangeToWeapon(weapons.ActiveWeaponIndex);
+        popupSpawner.SpawnText($"picked up {gameObject.GetComponent<WeaponBehaviour>().WeaponName}");
     }
 
     private void OnFire(InputAction.CallbackContext context) {

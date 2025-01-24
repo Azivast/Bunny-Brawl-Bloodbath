@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField] private int chanceOfNewDir = 50;
     [SerializeField] private float newMoveTime = 2;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private Random rand;
     private float moveTimer;
@@ -20,6 +21,7 @@ public class EnemyMovement : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rand = new Random();
     }
 
@@ -41,5 +43,6 @@ public class EnemyMovement : MonoBehaviour {
 
     private void Update() {
         animator.SetFloat("Velocity", rb.velocity.magnitude);
+        spriteRenderer.flipX = rb.velocity.x < 0;
     }
 }

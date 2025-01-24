@@ -19,9 +19,9 @@ public class Projectile : MonoBehaviour {
         bouncesLeft = bounces;
     }
 
-    private void FixedUpdate() {
-        rb.velocity = transform.forward * speed;
-    }
+    // private void FixedUpdate() {
+    //     rb.velocity = transform.forward * speed;
+    // }
 
     private void OnCollisionEnter2D(Collision2D col) 
     {

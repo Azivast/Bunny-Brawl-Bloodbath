@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 468719331699266382}
   - component: {fileID: 6286772249118617067}
   - component: {fileID: 4553422611959525124}
+  - component: {fileID: 6072276431134713318}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -90,6 +91,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   fire: {fileID: -621631156938017560, guid: d1883ee3fa76a554a966a328da270392, type: 3}
   switchWeapon: {fileID: 217943852245954930, guid: d1883ee3fa76a554a966a328da270392, type: 3}
+  popupSpawner: {fileID: 6072276431134713318}
 --- !u!114 &3449549980980382734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +235,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1377181367, guid: 97f528671fb15bc4495bd0c4bee63b97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c76cb080c99d8c94ca0921617cd1efd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -415,6 +417,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Particle: {fileID: 8801916787056940184, guid: d31167e79dc48044a81ab821b6ca17ec, type: 3}
+--- !u!114 &6072276431134713318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb927b7209fee641ae1ab97924efbb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 6462250862012057663, guid: e25736d7f56893448a41a3872ab5e17e, type: 3}
 --- !u!1 &5783099774653898744
 GameObject:
   m_ObjectHideFlags: 0

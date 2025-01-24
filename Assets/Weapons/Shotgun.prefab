@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3805083560204432120}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.09709625, w: 0.995275}
   m_LocalPosition: {x: 0.725, y: 0.117, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9080671210167341124}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.144}
 --- !u!1 &8740871170786676832
 GameObject:
@@ -54,19 +54,20 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8740871170786676832}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.016644293, w: 0.9998615}
   m_LocalPosition: {x: 0.734, y: 0.046, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9080671210167341124}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.907}
 --- !u!1001 &6034234463884666215
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1627943248746036259, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
@@ -130,6 +131,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: WeaponName
+      value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 6678877243556975699, guid: 967046097781c644c909d5a9737f5634, type: 3}
@@ -190,6 +195,15 @@ PrefabInstance:
       value: -6.201
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3294644933652641059, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1923144937023256717}
+    - targetCorrespondingSourceObject: {fileID: 3294644933652641059, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8600132383389448391}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
 --- !u!4 &9080671210167341124 stripped
 Transform:
