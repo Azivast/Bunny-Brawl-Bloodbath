@@ -28,11 +28,13 @@ namespace ProceduralGeneration
                  var tile = levelData[x, y];
                  if (tile == LevelGenerator.AvailableTiles.Ground)
                  {
+                    /*
                      if (y < levelData.GetLength(1)-1 && levelData[x, y + 1] == LevelGenerator.AvailableTiles.Wall)
                      {
                          groundMap.SetTile(new Vector3Int(x, y), edgeTile);
                      }
-                     else groundMap.SetTile(new Vector3Int(x, y), groundTile);
+                     else */
+                     groundMap.SetTile(new Vector3Int(x, y), groundTile);
                  }
                  else
                  {
