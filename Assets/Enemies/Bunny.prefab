@@ -130,7 +130,7 @@ MonoBehaviour:
   attackRange: 6
   raycastHitLayers:
     serializedVersion: 2
-    m_Bits: 8256
+    m_Bits: 64
 --- !u!114 &8657434626488876039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,8 +273,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.48, y: 0.76}
+  m_Offset: {x: 0, y: -0.060534537}
+  m_Size: {x: 0.4507091, y: 0.65845823}
   m_Direction: 0
 --- !u!82 &7555010747343704518
 AudioSource:
