@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour {
     private void Start() {
         cam = GetComponent<Camera>();
 
+        transform.position = new Vector3(targetTransform.position.x, targetTransform.position.y, transform.position.z);
+
         initialZ = transform.position.z;
         
         Vector2 hotspot = new Vector2(crosshairTexture.width / 2, crosshairTexture.height / 2);
