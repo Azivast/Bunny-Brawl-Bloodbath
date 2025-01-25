@@ -14,12 +14,14 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField] private InteractHandlerObject interactHandler;
     
     private Rigidbody2D rb;
+    private Animator anim;
     private Vector2 velocity;
     private TargetBehaviour targetBehaviour;
     
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         targetBehaviour = GetComponent<TargetBehaviour>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable() {
@@ -45,5 +47,6 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void FixedUpdate() {
         rb.velocity = move.action.ReadValue<Vector2>() * speed;
+        anim.SetFloat("Velocity", rb.velocity != Vector2.zero ? 0.1f : 0.0f);
     }
 }
