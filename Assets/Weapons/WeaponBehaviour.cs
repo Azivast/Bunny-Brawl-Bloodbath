@@ -11,6 +11,8 @@ public class WeaponBehaviour : MonoBehaviour {
     public string WeaponName;
     [SerializeField] private GameObject projectile;
     public AmmoType AmmoType;
+    [SerializeField] private GameObject casingPrefab;
+    [SerializeField] private Transform casingEjectPos;
     [SerializeField] private Transform[] firingPositions;
     [SerializeField] private float fireRate = 1;
     [SerializeField] private UnityEvent onFire;
@@ -19,6 +21,7 @@ public class WeaponBehaviour : MonoBehaviour {
     [SerializeField] private float shakeDuration = 0.1f;
     [SerializeField] private float shakeIntensity = 0.05f;
     public bool InfiniteAmmo = false;
+    [SerializeField] private bool dropCasing = true;
     
     private Quaternion rotation;
     private float fireTimer;
@@ -58,6 +61,7 @@ public class WeaponBehaviour : MonoBehaviour {
             var bullet = Instantiate(projectile, firingPosition.position, firingPosition.rotation);
             bullet.layer = projectileLayer;
         }
+        if (dropCasing) Instantiate(casingPrefab, casingEjectPos.position, casingEjectPos.rotation);
         onFire.Invoke();
         CameraShake.Shake(shakeDuration, shakeIntensity);
         StartCoroutine(PostShoot());

@@ -85,6 +85,10 @@ PrefabInstance:
       value: Katana
       objectReference: {fileID: 0}
     - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
+      propertyPath: dropCasing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921410398708238903, guid: f2440fb03962cf44abeb8efd13d63658, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 1992370429677370587, guid: bacb26527984e524c99af066d5921911, type: 3}

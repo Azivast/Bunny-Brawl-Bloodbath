@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2763523970077037857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7695725684399352175}
+  m_Layer: 0
+  m_Name: casingsPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7695725684399352175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763523970077037857}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.101, y: -0.024, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3294644933652641059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5601687895280464512
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +194,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8887809741613362626}
+  - {fileID: 7695725684399352175}
   - {fileID: 1627943248746036259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,6 +213,8 @@ MonoBehaviour:
   WeaponName: Base Weapon
   projectile: {fileID: 8390488424815572418, guid: 297e8a5342126f140b163fd6e514c947, type: 3}
   AmmoType: {fileID: 11400000, guid: 53abfb4852c578d469f19ab4fc1da2c3, type: 2}
+  casingPrefab: {fileID: 2793902355055866092, guid: 51bea8556515440058d6205c6e18b20e, type: 3}
+  casingEjectPos: {fileID: 7695725684399352175}
   firingPositions:
   - {fileID: 8887809741613362626}
   fireRate: 0.1
