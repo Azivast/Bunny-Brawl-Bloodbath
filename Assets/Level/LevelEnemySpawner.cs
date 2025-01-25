@@ -40,10 +40,10 @@ namespace ProceduralGeneration
                         var tile = levelData[x, y];
                         if (tile == LevelGenerator.AvailableTiles.Ground)
                         {
-                            double chance = ConstRandom.Random.NextDouble()*100; // NextDouble returns [0,1]*100=[0,100]
+                            double chance = UnityEngine.Random.Range(0,100)*100; // NextDouble returns [0,1]*100=[0,100]
                             if (chance < spawnChance)
                             {
-                                Object.Instantiate(enemies[ConstRandom.Random.Next(enemies.Count)], new Vector3(x, y) + (Vector3)offset, Quaternion.identity, parent);
+                                Object.Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], new Vector3(x, y) + (Vector3)offset, Quaternion.identity, parent);
                                 enemiesSpawned++;
                                 enemySpawnedThisIteration = true;
                                 

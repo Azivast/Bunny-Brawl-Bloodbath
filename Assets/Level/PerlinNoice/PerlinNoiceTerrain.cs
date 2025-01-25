@@ -3,8 +3,30 @@ using System.Collections.Generic;
 using ProceduralGeneration;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEditor;
 
-//code from: https://pastebin.com/xnbsYSSw
+#if UNITY_EDITOR // => Ignore from here to next endif if not in editor
+    [CustomEditor(typeof(PerlinNoiceTerrain))]
+    public class PerlinNoiceTerrainEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            if (GUILayout.Button("Generate"))
+            {
+                PerlinNoiceTerrain generator = target as PerlinNoiceTerrain;
+                generator.Generate();
+            }
+                
+            if (GUILayout.Button("Randomize New"))
+            {
+                PerlinNoiceTerrain generator = target as PerlinNoiceTerrain;
+                generator.GenerateNew();
+            }
+        }
+    }
+#endif
 public class PerlinNoiceTerrain : MonoBehaviour
 {
     [Header("Level Settings")]
@@ -14,13 +36,8 @@ public class PerlinNoiceTerrain : MonoBehaviour
     [SerializeField] private TilemapPopulator tilemapPopulator = new TilemapPopulator();
     [SerializeField] private LevelChestSpawner chestSpawner = new LevelChestSpawner();
     [SerializeField] private LevelEnemySpawner enemySpawner = new LevelEnemySpawner();
-    [Header("Perlin Noise")]
-    // The origin of the sampled area in the plane.
-    private float xOrg;
-    private float yOrg;
 
-    // The number of cycles of the basic noise pattern that are repeated
-    // over the width and height of the texture.
+    [Header("Perlin Noise")]
     [SerializeField] private float scale = 1.0f;
     [FormerlySerializedAs("thershHold")] [SerializeField] private float threshold = 0.5f;
     
@@ -33,20 +50,20 @@ public class PerlinNoiceTerrain : MonoBehaviour
     
     private List<Vector2> weaponChestPostitions;
     private List<Vector2> ammoChestPositions;
-    private List<Vector2Int> possibleChestSpawn;
+    private List<Vector2> possibleChestSpawn;
     private Vector2 spawnPosition;
 
     private void Start()
     {
-        //chestSpawner.ClearObjects();
-        //enemySpawner.ClearEnemies();
+        chestSpawner.ClearObjects();
+        enemySpawner.ClearEnemies();
         GenerateNew();
     }
 
     private void OnDestroy()
     {
-        //chestSpawner.ClearObjects();
-        //enemySpawner.ClearEnemies();
+        chestSpawner.ClearObjects();
+        enemySpawner.ClearEnemies();
     }
 
     public void GenerateNew()
@@ -63,45 +80,45 @@ public class PerlinNoiceTerrain : MonoBehaviour
     private void ResetGeneration()
     {
         generatedLevel = new LevelGenerator.AvailableTiles[levelCapacity.x, levelCapacity.y];
-        /*
+        
         weaponChestPostitions = new List<Vector2>();
         ammoChestPositions = new List<Vector2>();
         chestSpawner.ClearObjects();
-        enemySpawner.ClearEnemies();*/
+        enemySpawner.ClearEnemies();
     }
     
     public void Generate()
     {
-        possibleChestSpawn = new List<Vector2Int>();
+        possibleChestSpawn = new List<Vector2>();
         ResetGeneration();
         
         CalcNoise();
         FloodFill();
+        CalculateChestPositions();
 
         // Populate Tilemap
         tilemapPopulator.Populate(generatedLevel);
-        /*
+        
+        //Debug.Log(chestSpawner);
         // Spawn Items
         chestSpawner.SpawnAmmoChests(ammoChestPositions, spawnPosition);
         chestSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition);
         
         // Spawn Enemies
-        enemySpawner.SpawnEnemies(generatedLevel, spawnPosition, tilemapPopulator.TileMiddleOffset);*/
+        enemySpawner.SpawnEnemies(generatedLevel, spawnPosition, tilemapPopulator.TileMiddleOffset);
     }
 
     void CalcNoise()
     {
         //985860
         Random.InitState(seed);
-        xOrg = Random.value;
-        yOrg = Random.value;
         // For each pixel in the texture...
         for (int y = 0; y < levelCapacity.y; y++)
         {
             for (int x = 0; x < levelCapacity.x; x++)
             {
                 float sample = Mathf.PerlinNoise(seed+x / scale, seed +y/scale);
-                Debug.Log((levelCapacity / 2 - new Vector2Int(x, y)).magnitude * strenght);
+                
                 if ((levelCapacity / 2 - new Vector2Int(x, y)).magnitude > guaranteedPlayableRadius)
                 {
                     sample += (levelCapacity / 2 - new Vector2Int(x, y)).magnitude * strenght;
@@ -168,7 +185,7 @@ public class PerlinNoiceTerrain : MonoBehaviour
                     if (!visited[neighbor.x, neighbor.y] &&
                         generatedLevel[neighbor.x, neighbor.y] == LevelGenerator.AvailableTiles.Wall)
                     {
-                        possibleChestSpawn.Add(new Vector2Int(neighbor.x, neighbor.y));
+                        possibleChestSpawn.Add(new Vector2(current.x + 0.5f, current.y + 0.5f));
                     }
                 }
             }
@@ -185,13 +202,31 @@ public class PerlinNoiceTerrain : MonoBehaviour
         Debug.Log("Flood fill complete.");
     }
 
+    private void CalculateChestPositions()
+    {
+        int count = possibleChestSpawn.Count;
+        Debug.Log("Possible position count: " + count);
+        for (int i = 0; i < count; i++)
+        {
+            int number = Random.Range(0, possibleChestSpawn.Count);
+            if(i % 2 == 0)
+            {
+                ammoChestPositions.Add(possibleChestSpawn[number]);
+            }
+            else
+            {
+                weaponChestPostitions.Add(possibleChestSpawn[number]);
+            }
+            possibleChestSpawn.RemoveAt(number);
+        }
+    }
     
     private void OnDrawGizmos()
     {
         // Player spawn
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(new Vector3(spawnPosition.x, spawnPosition.y, 0), 0.5f);
-        /*
+        
         // Weapon chests
         if (weaponChestPostitions != null)
         {
@@ -210,6 +245,6 @@ public class PerlinNoiceTerrain : MonoBehaviour
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawSphere(new Vector3(pos.x, pos.y, 0), 0.5f);
             }
-        }*/
+        }
     }
 }

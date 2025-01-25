@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using Random = System.Random;
 
 namespace ProceduralGeneration
 {
@@ -37,7 +36,7 @@ namespace ProceduralGeneration
                 if (availableLocations.Count <= 0) return;
                 
                 // Find suitable location that isn't too close to player or occupied
-                Vector2 selectedLocation = availableLocations[ConstRandom.Random.Next(availableLocations.Count)];
+                Vector2 selectedLocation = availableLocations[UnityEngine.Random.Range(0, availableLocations.Count)];
                 if ((selectedLocation - playerPos).magnitude < minDistanceToSpawn)
                 {
                     availableLocations.Remove(selectedLocation);
