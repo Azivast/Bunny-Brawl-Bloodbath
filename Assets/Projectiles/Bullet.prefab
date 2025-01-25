@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561deb2de5862fd42acb2dd3bcc9f58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 13
   damage: 1
+  bounces: 0
   defaultHitParticle: {fileID: 8801916787056940184, guid: 42d628136b51ac55c81603c74fab46d4, type: 3}
 --- !u!212 &8390488424815572423
 SpriteRenderer:
