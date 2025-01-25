@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 35771812137876262, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
@@ -30,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 468719331699266385, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1377181367, guid: 31ecf08a057376845bfdbdd36ae443f6, type: 3}
+      objectReference: {fileID: 21300000, guid: 4116be8c320150f44b0601679b96e574, type: 3}
     - target: {fileID: 468719331699266387, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -78,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 3146995540805781364, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 85af688780bce1846b6e772ac58a1ee9, type: 2}
+      objectReference: {fileID: 9100000, guid: f38f950e2740ce54bad3762cb4f8b363, type: 2}
     - target: {fileID: 3350798044463244803, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: weapon
       value: 
@@ -93,6 +94,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: ec3d94baed07a664f980b1421630ccc8, type: 3}
     m_RemovedComponents:
     - {fileID: 8657434626488876039, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 468719331699266381, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2028211405930512706}
   m_SourcePrefab: {fileID: 100100000, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
 --- !u!1 &8603535723373321348 stripped
 GameObject:
