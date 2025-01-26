@@ -89,10 +89,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_Target
-      value: 
-      objectReference: {fileID: 5710472372599331833}
-    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -109,16 +105,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 21300000, guid: 001cd97c6fef2894b8c2f4676fa1e68a, type: 3}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 504ff253c43896f448c4f1468978f510, type: 3}
+    - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_Color.b
-      value: 0.5630168
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_Color.g
-      value: 0.5424528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325261, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_Color.r
@@ -133,8 +137,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
---- !u!1 &5710472372599331833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5256606645199122107, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
-  m_PrefabInstance: {fileID: 561995279758931266}
-  m_PrefabAsset: {fileID: 0}
