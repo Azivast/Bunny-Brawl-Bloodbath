@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,10 +8,17 @@ public class PlayerWeaponHandler : MonoBehaviour {
     [SerializeField] private CameraController cam;
     [SerializeField] private InputActionReference fire, switchWeapon;
     [SerializeField] private PopupSpawner popupSpawner;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
     
     private GameObject activeWeapon;
     private WeaponBehaviour activeWeaponBehaviour;
     private int bulletLayer = 8;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Start() {
         ChangeToWeapon(0);
@@ -38,6 +46,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
 
     private void Aim() {
         activeWeaponBehaviour.Target = cam.MouseWorldPosition();
+        spriteRenderer.flipX = activeWeaponBehaviour.Target.x < transform.position.x;
     }
 
     private void Update() {

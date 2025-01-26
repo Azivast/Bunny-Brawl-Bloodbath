@@ -93,6 +93,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5088376810789486744, guid: 42a155399864b184493c607c32057a4e, type: 3}
     - target: {fileID: 3350798044463244803, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
+      propertyPath: doCooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350798044463244803, guid: c8bffb17d5cb6a14293c53c2b958b7fa, type: 3}
       propertyPath: atttackRange
       value: 0.5
       objectReference: {fileID: 0}

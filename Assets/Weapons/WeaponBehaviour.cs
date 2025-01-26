@@ -63,7 +63,7 @@ public class WeaponBehaviour : MonoBehaviour {
         }
         if (dropCasing) Instantiate(casingPrefab, casingEjectPos.position, casingEjectPos.rotation);
         onFire.Invoke();
-        CameraShake.Shake(shakeDuration, shakeIntensity);
+        CameraShake.Shake(shakeDuration, -transform.right, shakeIntensity);
         StartCoroutine(PostShoot());
     }
     

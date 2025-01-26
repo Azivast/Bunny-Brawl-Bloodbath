@@ -128,9 +128,12 @@ MonoBehaviour:
   weapon: {fileID: 4573578538294145162, guid: 4e2e10a53ab10334f8a5f8d11a054a61, type: 3}
   weaponPosition: {fileID: 35771812137876262}
   attackRange: 6
+  shootTimeBeforeCooldown: 0.5
+  cooldownLength: 1.5
+  doCooldown: 1
   raycastHitLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8256
 --- !u!114 &8657434626488876039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,8 +276,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.060534537}
-  m_Size: {x: 0.4507091, y: 0.65845823}
+  m_Offset: {x: 0, y: -0.06053454}
+  m_Size: {x: 0.4507091, y: 0.6584582}
   m_Direction: 0
 --- !u!82 &7555010747343704518
 AudioSource:

@@ -12,7 +12,7 @@ public class PlayerBehaviour : MonoBehaviour {
     [SerializeField] private int speed;
     [SerializeField] private PlayerHealthObject health;
     [SerializeField] private InteractHandlerObject interactHandler;
-    
+
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 velocity;
@@ -22,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         targetBehaviour = GetComponent<TargetBehaviour>();
         anim = GetComponent<Animator>();
+
     }
 
     private void OnEnable() {

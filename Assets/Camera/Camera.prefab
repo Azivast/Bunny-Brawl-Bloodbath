@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9081722558611509450}
   - component: {fileID: 5781203147686337006}
   - component: {fileID: 8749199654490371484}
+  - component: {fileID: 5714120358130425017}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -117,13 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AssetsPPU: 25
-  m_RefResolutionX: 200
-  m_RefResolutionY: 150
+  m_AssetsPPU: 32
+  m_RefResolutionX: 320
+  m_RefResolutionY: 240
   m_UpscaleRT: 1
   m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
   m_StretchFill: 0
 --- !u!81 &5781203147686337006
 AudioListener:
@@ -169,3 +170,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5714120358130425017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306645232869076611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032f2cfe8a3a37724af4875a436a735d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
