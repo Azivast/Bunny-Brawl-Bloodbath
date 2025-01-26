@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5598010578160338962}
   - component: {fileID: 3350798044463244803}
   - component: {fileID: 8657434626488876039}
+  - component: {fileID: -4294664274173235335}
   - component: {fileID: -5067385753422758756}
   - component: {fileID: 468719331699266385}
   - component: {fileID: 468719331699266383}
@@ -172,6 +173,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -4294664274173235335}
+        m_TargetAssemblyTypeName: ObjectDropper, Assembly-CSharp
+        m_MethodName: DropItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -235,6 +248,22 @@ MonoBehaviour:
   speed: 1
   chanceOfNewDir: 0
   newMoveTime: 2
+--- !u!114 &-4294664274173235335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468719331699266381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571b3b897297d4c43a9624f8fc222f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 6208806176895572451, guid: 0cc607befac909942920c71b0e57983d, type: 3}
+  spread: 0
+  pickRandom: 0
 --- !u!114 &-5067385753422758756
 MonoBehaviour:
   m_ObjectHideFlags: 0
