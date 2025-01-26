@@ -24,6 +24,7 @@ namespace ProceduralGeneration
         [SerializeField] private int minRoomSize = 3;
         [SerializeField] private int maxRoomSize = 7;
         [SerializeField] private int seed = 1234567;
+        [SerializeField] private bool randomizeSeed;
         [Header("Agent Settings")]
         [SerializeField] private int agentDirectionChance = 5;
         [SerializeField] private int agentRoomChance = 5;
@@ -58,7 +59,7 @@ namespace ProceduralGeneration
 
         public void GenerateNew()
         {
-            RandomizeSeed();
+            if (randomizeSeed) RandomizeSeed();
             Generate();
         }
 
@@ -70,6 +71,7 @@ namespace ProceduralGeneration
         private void ResetGeneration()
         {
             ConstRandom.Random = new Random(seed);
+            UnityEngine.Random.InitState(seed);
             generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y];
             startingTile.x = levelCapacity.x/2;
             startingTile.y = levelCapacity.y/2;
