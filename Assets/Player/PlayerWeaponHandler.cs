@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponHandler : MonoBehaviour {
@@ -9,6 +10,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
     [SerializeField] private InputActionReference fire, switchWeapon;
     [SerializeField] private PopupSpawner popupSpawner;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private UnityEvent onChangeWeapon;
     
     
     private GameObject activeWeapon;
@@ -64,6 +66,7 @@ public class PlayerWeaponHandler : MonoBehaviour {
         activeWeapon.transform.localPosition = Vector3.zero;
         activeWeaponBehaviour = activeWeapon.GetComponent<WeaponBehaviour>();
         activeWeapon.SetActive(true);
+        onChangeWeapon.Invoke();
     }
 
     private void OnWeaponEquipped(GameObject gameObject) {
