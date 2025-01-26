@@ -6,7 +6,6 @@ Shader "Unlit/ShineEffect"
         _ShineColor ("Shine Color", Color) = (1,1,1,1)
         _ShineWidth ("Shine Width", Range(0.01, 0.5)) = 0.2
         _ShineSpeed ("Shine Speed", Range(0.1, 5.0)) = 1.0
-        
         _CycleDuration ("Cycle Duration", Range(1.0, 5.0)) = 2.0 // Time for one full cycle (cover + uncover)
     }
     SubShader
@@ -56,36 +55,26 @@ Shader "Unlit/ShineEffect"
             {
                 float2 uv = i.uv;
                 float diagonal = uv.x + uv.y;
-                diagonal = diagonal*0.5;
+                diagonal = diagonal * 0.5;
 
                 // Animate the shine position over time
                 float time = frac(_Time.y * _ShineSpeed / _CycleDuration); // Cycle time for covering and uncovering
 
-                // Determine if we're covering or uncovering
-                float shinePosition;
-                if (time < 0.5)
-                {
-                    // Cover the sprite from bottom-left to top-right
-                    shinePosition = time * 2.0; // Line moves from 0 to 1
-                }
-                else
-                {
-                    // Uncover the sprite from bottom-left to top-right
-                    shinePosition = 1.0 - ((time - 0.5) * 2.0); // Line moves from 1 to 0
-                }
+                // Calculate the shine position (always moving from bottom-left to top-right)
+                float shinePosition = time;
 
-                // Shine mask calculation that moves diagonally
-                float shineMask = 1.0 - smoothstep(shinePosition - _ShineWidth, shinePosition, diagonal) *
-                                  smoothstep(shinePosition, shinePosition + _ShineWidth, diagonal);
+                // Shine mask calculation that creates a "bar" (hard edges)
+                // Replacing smoothstep with step for hard edges
+                float shineMask = step(shinePosition - _ShineWidth, diagonal) *
+                                  (1.0 - step(shinePosition + _ShineWidth, diagonal));
 
-                
-                // Hämta sprite-texturen
+                // Get the sprite texture
                 fixed4 baseColor = tex2D(_MainTex, uv);
 
-                // Begränsa effekten till alfamasken
+                // Apply the shine color (with alpha from the texture)
                 fixed4 shineColor = _ShineColor * shineMask * baseColor.a;
 
-                // Kombinera texturen med linjen
+                // Combine the base texture with the shine effect
                 return baseColor + shineColor;
             }
             ENDCG

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menus/Win.unity
     guid: d2ac197240a8b7b4892017b33dbc5631
+  - enabled: 1
+    path: Assets/Level/Scenes/PerlinNoice.unity
+    guid: 5a5feb5039de8c94ab0b5fb51d3b23a6
   m_configObjects: {}
