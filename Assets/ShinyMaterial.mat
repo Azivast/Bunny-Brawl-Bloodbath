@@ -63,7 +63,8 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _CycleDuration: 2
+    - _CycleDuration: 1.2
+    - _DelayDuration: 0.133
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FadeDuration: 1
@@ -74,8 +75,10 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ShineSpeed: 2
-    - _ShineWidth: 0.115
+    - _ShineDelay: 0.18
+    - _ShineInterval: 2
+    - _ShineSpeed: 1.5
+    - _ShineWidth: 0.105
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

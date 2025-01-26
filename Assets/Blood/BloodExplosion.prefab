@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 3943039802872994004}
   - component: {fileID: 8340386152313654833}
   m_Layer: 0
-  m_Name: BloodEmitter
+  m_Name: BloodExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5186,7 +5186,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.01
-      minScalar: 0.05
+      minScalar: 0.08
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5509,7 +5509,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5562,7 +5562,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 0
     angle: 54.35
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -5878,7 +5878,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 100
+        scalar: 500
         minScalar: 30
         maxCurve:
           serializedVersion: 2

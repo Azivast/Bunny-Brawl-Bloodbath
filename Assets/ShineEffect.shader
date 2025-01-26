@@ -7,6 +7,7 @@ Shader "Unlit/ShineEffect"
         _ShineWidth ("Shine Width", Range(0.01, 0.5)) = 0.2
         _ShineSpeed ("Shine Speed", Range(0.1, 5.0)) = 1.0
         _CycleDuration ("Cycle Duration", Range(1.0, 5.0)) = 2.0 // Time for one full cycle (cover + uncover)
+        _ShineInterval ("Shine Interval", Range(0.1, 2.0)) = 0.5 // Time between each shine beam
     }
     SubShader
     {
@@ -42,6 +43,7 @@ Shader "Unlit/ShineEffect"
             float _ShineWidth;
             float _ShineSpeed;
             float _CycleDuration;
+            float _ShineInterval;
             
             v2f vert (appdata v)
             {
@@ -60,13 +62,15 @@ Shader "Unlit/ShineEffect"
                 // Animate the shine position over time
                 float time = frac(_Time.y * _ShineSpeed / _CycleDuration); // Cycle time for covering and uncovering
 
-                // Calculate the shine position (always moving from bottom-left to top-right)
-                float shinePosition = time;
+                // Control the time intervals
+                float shinePhase = floor(time / _ShineInterval);  // Divide time into intervals
+                float shinePosition = frac(time);  // The position of the shine within the current interval
 
-                // Shine mask calculation that creates a "bar" (hard edges)
-                // Replacing smoothstep with step for hard edges
-                float shineMask = step(shinePosition - _ShineWidth, diagonal) *
-                                  (1.0 - step(shinePosition + _ShineWidth, diagonal));
+                // Determine if the current time is within a "shining" interval
+                float shineMask = step(shinePosition - _ShineWidth, diagonal) * (1.0 - step(shinePosition + _ShineWidth, diagonal));
+                
+                // Ensure that the shine occurs only during the right intervals
+                shineMask *= step(shinePhase, 1.0); // Show shine only during certain phases
 
                 // Get the sprite texture
                 fixed4 baseColor = tex2D(_MainTex, uv);
