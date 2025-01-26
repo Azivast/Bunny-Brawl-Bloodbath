@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1925050246245127394, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
@@ -67,9 +68,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5054412921894325260, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
+      propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5054412921894325263, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
       propertyPath: m_Name
       value: AmmoChest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574096a142559b14ea3aaa6dc7dc1953, type: 3}
