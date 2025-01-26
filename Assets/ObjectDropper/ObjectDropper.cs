@@ -20,7 +20,8 @@ public class ObjectDropper : MonoBehaviour {
         }
         else
         {
-            int index = ConstRandom.Random.Next(objects.Length);
+            //int index = ConstRandom.Random.Next(objects.Length);
+            int index = UnityEngine.Random.Range(0, objects.Length);
             Instantiate(objects[index], transform.position + (Vector3)Random.insideUnitCircle * spread, Quaternion.identity);
         }
 

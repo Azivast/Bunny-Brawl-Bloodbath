@@ -36,4 +36,5 @@ public class PlayerHealthObject : ScriptableObject
         MaxHealth += amount;
         OnHealthChange(CurrentHealth, MaxHealth);
     }
+    
 }

@@ -76,6 +76,7 @@ MonoBehaviour:
   speed: 5
   health: {fileID: 11400000, guid: dd44c56797810044b9bffd9d29b0b143, type: 2}
   interactHandler: {fileID: 11400000, guid: b9938babe2b05574d8e69513432102d3, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 214cc69a3f7212f4a9ed5971c8b56f92, type: 2}
 --- !u!114 &5977862962430158726
 MonoBehaviour:
   m_ObjectHideFlags: 0
