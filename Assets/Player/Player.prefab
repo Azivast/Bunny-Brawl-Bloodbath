@@ -40,6 +40,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 698569424234658497}
   - {fileID: 35771812137876262}
   - {fileID: 6886180084531884870}
   m_Father: {fileID: 0}
@@ -71,9 +72,103 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6286772249118617067}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 46f18345a89d1ba59b96e67416d14b8a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6773421507093390}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468719331699266385}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6286772249118617067}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a2eda13f6043442458e6b5c7e3f3775e, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5783099774653898744}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2766223887327891971}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468719331699266383}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
+        m_MethodName: set_simulated
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   move: {fileID: 6361950364791684682, guid: d1883ee3fa76a554a966a328da270392, type: 3}
+  dash: {fileID: -7608234973928302703, guid: d1883ee3fa76a554a966a328da270392, type: 3}
   interact: {fileID: 8419221548602724490, guid: d1883ee3fa76a554a966a328da270392, type: 3}
   speed: 5
+  dashSpeed: 10
+  dashDuration: 0.1
+  dashCooldown: 0.5
   health: {fileID: 11400000, guid: dd44c56797810044b9bffd9d29b0b143, type: 2}
   interactHandler: {fileID: 11400000, guid: b9938babe2b05574d8e69513432102d3, type: 2}
   flashMaterial: {fileID: 2100000, guid: 214cc69a3f7212f4a9ed5971c8b56f92, type: 2}
@@ -208,6 +303,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7e553cfc-33df-459b-95af-76d26dc43e23
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 35437a2c-818e-4eb1-afb1-dcba209062ba
+    m_ActionName: Player/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -585,3 +684,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 468719331699266387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3936266656998800218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 468719331699266387}
+    m_Modifications:
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801916787056940184, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+      propertyPath: m_Name
+      value: BloodExplosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+--- !u!198 &6773421507093390 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3943039802872994004, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+  m_PrefabInstance: {fileID: 3936266656998800218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &698569424234658497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4544620877090914715, guid: d051692bc73c6097796e37aa2f0715f8, type: 3}
+  m_PrefabInstance: {fileID: 3936266656998800218}
+  m_PrefabAsset: {fileID: 0}
