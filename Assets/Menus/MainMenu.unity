@@ -154,7 +154,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159636139297256444, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_text
-      value: PLAY C
+      value: Level C
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Pivot.x
@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: PerlinNoice
+      value: PerlinNoice2
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ProceduralGeneration
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -905,7 +905,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159636139297256444, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_text
-      value: PLAY B
+      value: Level B
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Pivot.x
@@ -1150,7 +1150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159636139297256444, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_text
-      value: PLAY D
+      value: Level D
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Pivot.x
@@ -1314,7 +1314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: PerlinNoice
+      value: ProceduralGeneration2
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1443,7 +1443,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159636139297256444, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_text
-      value: PLAY A
+      value: Level A
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Pivot.x
@@ -2075,7 +2075,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849399908}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -2088,7 +2088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bunny Brawl Bloodbath
+  m_text: 'Choose Level:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5286e049fd0b7cd4f9c658b792a87455, type: 2}
   m_sharedMaterial: {fileID: -1624721367066462905, guid: 5286e049fd0b7cd4f9c658b792a87455, type: 2}

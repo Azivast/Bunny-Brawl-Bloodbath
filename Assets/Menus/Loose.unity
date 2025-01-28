@@ -235,7 +235,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1159636139297256444, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_text
-      value: REturn
+      value: Return to menu
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Pivot.x
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 115.92
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_SizeDelta.y
@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 21.199997
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049796, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU LOOSE
+  m_text: YOU Died
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5286e049fd0b7cd4f9c658b792a87455, type: 2}
   m_sharedMaterial: {fileID: -1624721367066462905, guid: 5286e049fd0b7cd4f9c658b792a87455, type: 2}
@@ -1149,6 +1149,14 @@ PrefabInstance:
     - target: {fileID: 5516091625287049797, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Name
       value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516091625287049797, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5516091625287049819, guid: f5c78970ca626c04da15d0a78e458474, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
