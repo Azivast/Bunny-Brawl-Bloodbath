@@ -101,8 +101,8 @@ public class PerlinNoiceTerrain : MonoBehaviour
         
         //Debug.Log(chestSpawner);
         // Spawn Items
-        chestSpawner.SpawnAmmoChests(ammoChestPositions, spawnPosition);
-        chestSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition);
+        chestSpawner.SpawnAmmoChests(ammoChestPositions, spawnPosition, seed);
+        chestSpawner.SpawnWeaponChests(weaponChestPostitions, spawnPosition, seed);
         
         // Spawn Enemies
         enemySpawner.SpawnEnemies(generatedLevel, spawnPosition, tilemapPopulator.TileMiddleOffset);

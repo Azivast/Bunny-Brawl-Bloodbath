@@ -17,18 +17,19 @@ namespace ProceduralGeneration
         [SerializeField] private Transform parent;
         [SerializeField] private List<Vector2> spawnedPositions;
 
-        public void SpawnWeaponChests(List<Vector2> locations, Vector2 playerPos)
+        public void SpawnWeaponChests(List<Vector2> locations, Vector2 playerPos, int seed)
         {
-            Spawn(weaponChest, locations, playerPos);
+            Spawn(weaponChest, locations, playerPos, seed);
         }
         
-        public void SpawnAmmoChests(List<Vector2> locations, Vector2 playerPos)
+        public void SpawnAmmoChests(List<Vector2> locations, Vector2 playerPos, int seed)
         {
-            Spawn(ammoChest, locations, playerPos);
+            Spawn(ammoChest, locations, playerPos, seed);
         }
         
-        private void Spawn(GameObject chest, List<Vector2> locations, Vector2 playerPos)
+        private void Spawn(GameObject chest, List<Vector2> locations, Vector2 playerPos, int seed)
         {
+            UnityEngine.Random.InitState(seed);
             List<Vector2> availableLocations = locations.Distinct().ToList(); // remove duplicate locations
             
             for (int i = 0; i < maxNumberPerType;)

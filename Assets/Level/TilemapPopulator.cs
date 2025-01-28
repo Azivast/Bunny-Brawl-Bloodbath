@@ -11,7 +11,7 @@ namespace ProceduralGeneration
     public class TilemapPopulator
     {
         [SerializeField] private Tilemap groundMap, wallMap;
-        [SerializeField] private RuleTile groundTile, edgeTile, wallTile;
+        [SerializeField] private RuleTile groundTile, wallTile;
         public Vector2 TileMiddleOffset = new Vector2(0.5f, 0.5f);
 
         public void Populate(LevelGenerator.AvailableTiles[,] levelData)
