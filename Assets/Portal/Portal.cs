@@ -39,7 +39,7 @@ public class Portal : MonoBehaviour
         if (playerFound)
         {
             playerTransform.position = Vector2.SmoothDamp(playerTransform.position, transform.position, ref playerVelocity, 0.1f);
-            playerTransform.localScale = Vector2.SmoothDamp(playerTransform.localScale, Vector2.zero, ref playerScaleVelocity, 1f);
+            playerTransform.localScale = Vector2.SmoothDamp(playerTransform.localScale, new Vector2(0.001f, 0.001f), ref playerScaleVelocity, 1f);
 
             playerTransform.Rotate(-Vector3.forward, rotationSpeed* playerRotationSpeed * Time.deltaTime);
             if (playerRotationSpeed < 30) playerRotationSpeed+= 0.1f;
