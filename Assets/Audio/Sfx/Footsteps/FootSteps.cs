@@ -9,10 +9,6 @@ public class FootSteps : MonoBehaviour
     [SerializeField] private List<AudioClip> footStepsClip;
     [SerializeField]private AudioSource audioSource;
 
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     public void PlayFootStep()
     {
