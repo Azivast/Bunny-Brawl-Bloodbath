@@ -171,5 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 7386254286039366545, guid: cebb79a78aac8724bbf8a2b6720ecfb1, type: 3}
+  - {fileID: 6774706731529814469, guid: d84f5c020f34d114598e5452692f5239, type: 3}
   spread: 0.1
   pickRandom: 0

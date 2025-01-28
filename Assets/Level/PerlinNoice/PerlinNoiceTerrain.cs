@@ -113,6 +113,7 @@ public class PerlinNoiceTerrain : MonoBehaviour
     {
         //985860
         Random.InitState(seed);
+        ObjectDropper.SetSeed(seed);
         // For each pixel in the texture...
         for (int y = 0; y < levelCapacity.y; y++)
         {

@@ -27,4 +27,9 @@ public class ObjectDropper : MonoBehaviour {
 
         objects = Array.Empty<GameObject>();
     }
+
+    public static void SetSeed(int seed)
+    {
+        UnityEngine.Random.InitState(seed);
+    }
 }

@@ -10,7 +10,7 @@ public class SmoothPixelPerfectCameraMovement : MonoBehaviour
     private PixelPerfectCamera pcc;
     private Camera camera;
 
-    private void OnValidate()
+    private void Awake()
     {
         camera = GetComponent<Camera>();
         pcc = GetComponent<PixelPerfectCamera>();

@@ -72,6 +72,7 @@ namespace ProceduralGeneration
         {
             ConstRandom.Random = new Random(seed);
             UnityEngine.Random.InitState(seed);
+            ObjectDropper.SetSeed(seed);
             generatedLevel = new AvailableTiles[levelCapacity.x, levelCapacity.y];
             startingTile.x = levelCapacity.x/2;
             startingTile.y = levelCapacity.y/2;
