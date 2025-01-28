@@ -17,6 +17,8 @@ public class PlayerWeaponHandler : MonoBehaviour {
     private WeaponBehaviour activeWeaponBehaviour;
     private int bulletLayer = 8;
 
+    public WeaponBehaviour ActiveWeaponBehaviour => activeWeaponBehaviour;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

@@ -45,4 +45,9 @@ public class EquippedWeaponsObject : ScriptableObject
         
         weapons[i].GetComponent<WeaponBehaviour>().AmmoType.AddAmmo(amount);
     }
+
+    public WeaponBehaviour GetEquipedWeapon()
+    {
+        return weapons[ActiveWeaponIndex].GetComponent<WeaponBehaviour>();
+    }
 }
