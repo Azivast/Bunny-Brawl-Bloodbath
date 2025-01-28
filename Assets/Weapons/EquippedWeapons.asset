@@ -18,4 +18,4 @@ MonoBehaviour:
   weapons:
   - {fileID: 0}
   - {fileID: 0}
-  ActiveWeaponIndex: 2
+  ActiveWeaponIndex: 1
