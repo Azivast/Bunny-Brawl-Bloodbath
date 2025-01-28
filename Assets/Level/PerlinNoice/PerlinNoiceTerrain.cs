@@ -32,6 +32,7 @@ public class PerlinNoiceTerrain : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private Vector2Int levelCapacity = new Vector2Int(1000,1000);
     [SerializeField] private int seed = 1234567;
+    [SerializeField] private bool randomizeSeed;
     [Header("Components")]
     [SerializeField] private TilemapPopulator tilemapPopulator = new TilemapPopulator();
     [SerializeField] private LevelChestSpawner chestSpawner = new LevelChestSpawner();
@@ -68,7 +69,7 @@ public class PerlinNoiceTerrain : MonoBehaviour
 
     public void GenerateNew()
     {
-        RandomizeSeed();
+        if (randomizeSeed) RandomizeSeed();
         Generate();
     }
 
