@@ -236,6 +236,21 @@ MonoBehaviour:
   onPostFire:
     m_PersistentCalls:
       m_Calls: []
+  onEmptyFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6635905553003242868}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 6269b5fbb49303e4f82d37031e9d3ec8, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   postFireDelay: 0.1
   shakeDuration: 0.1
   shakeIntensity: 0.05

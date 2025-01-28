@@ -17,6 +17,7 @@ public class WeaponBehaviour : MonoBehaviour {
     [SerializeField] private float fireRate = 1;
     [SerializeField] private UnityEvent onFire;
     [SerializeField] private UnityEvent onPostFire;
+    [SerializeField] private UnityEvent onEmptyFire;
     [SerializeField] private float postFireDelay = 0.1f;
     [SerializeField] private float shakeDuration = 0.1f;
     [SerializeField] private float shakeIntensity = 0.05f;
@@ -55,7 +56,11 @@ public class WeaponBehaviour : MonoBehaviour {
         fireTimer = fireRate;
         foreach (Transform firingPosition in firingPositions) {
             if (InfiniteAmmo == false) {
-                if (AmmoType.GetAmmoLeft() < 1) return;
+                if (AmmoType.GetAmmoLeft() < 1)
+                {
+                    onEmptyFire.Invoke();
+                    return;
+                } 
                 else AmmoType.UseAmmo(1);
             }
             var bullet = Instantiate(projectile, firingPosition.position, firingPosition.rotation);
