@@ -26,7 +26,7 @@ namespace ProceduralGeneration
              for (var x = 0; x < levelData.GetLength(0); x++) // loop through x
              {
                  var tile = levelData[x, y];
-                 if (tile == LevelGenerator.AvailableTiles.Ground)
+                 if (tile == LevelGenerator.AvailableTiles.Ground) 
                  {
                     /*
                      if (y < levelData.GetLength(1)-1 && levelData[x, y + 1] == LevelGenerator.AvailableTiles.Wall)
