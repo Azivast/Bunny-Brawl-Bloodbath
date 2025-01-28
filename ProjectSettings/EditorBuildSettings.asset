@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/PerlinNoice.unity
     guid: 5a5feb5039de8c94ab0b5fb51d3b23a6
+  - enabled: 1
+    path: Assets/Level/Scenes/ProceduralGeneration2.unity
+    guid: 78dcdc47c030a934bbe56e0776067760
+  - enabled: 1
+    path: Assets/Level/Scenes/PerlinNoice2.unity
+    guid: 63fcd65212eb8334480833aa024cfda6
   m_configObjects: {}
