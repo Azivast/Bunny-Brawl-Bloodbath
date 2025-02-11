@@ -1,46 +1,27 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using UnityEngine;
 
-public class FileIO
+public static class FileIO
 {
-    public void SaveFile()
+    public static void SaveData(string data, string filename)
     {
-        string destination = Application.persistentDataPath + "/save.dat";
-        FileStream file;
-
-        if (File.Exists(destination)) file = File.OpenWrite(destination);
-        else file = File.Create(destination);
-
-        GameData data = new GameData(currentScore, currentName, currentTimePlayed);
-        BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(file, data);
-        file.Close();
-    }
-
-    public void LoadFile()
-    {
-        string destination = Application.persistentDataPath + "/save.dat";
-        FileStream file;
-
-        if (File.Exists(destination)) file = File.OpenRead(destination);
-        else
+        string destination = Application.persistentDataPath + filename + ".txt";
+        FileStream stream = null;
+        try
         {
-            Debug.LogError("File not found");
-            return;
+            // Create a FileStream with mode CreateNew
+            stream = new FileStream(destination, FileMode.OpenOrCreate);
+            // Create a StreamWriter from FileStream
+            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8 ))
+            {
+                writer.WriteLine(data);
+            }
         }
-
-        BinaryFormatter bf = new BinaryFormatter();
-        GameData data = (GameData)bf.Deserialize(file);
-        file.Close();
-
-        currentScore = data.score;
-        currentName = data.name;
-        currentTimePlayed = data.timePlayed;
-
-        Debug.Log(data.name);
-        Debug.Log(data.score);
-        Debug.Log(data.timePlayed);
+        finally
+        {
+            if (stream != null) stream.Dispose();
+        }
     }
-
 }

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ProceduralGeneration;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEditor;
+using Random = UnityEngine.Random;
 
 #if UNITY_EDITOR // => Ignore from here to next endif if not in editor
     [CustomEditor(typeof(PerlinNoiceTerrain))]
@@ -44,7 +46,6 @@ public class PerlinNoiceTerrain : MonoBehaviour
     
     [SerializeField]float strenght = 0.01f;
     [SerializeField]float guaranteedPlayableRadius = 20f;
-
 
     
     private LevelGenerator.AvailableTiles[,] generatedLevel;
@@ -90,6 +91,7 @@ public class PerlinNoiceTerrain : MonoBehaviour
     
     public void Generate()
     {
+        
         possibleChestSpawn = new List<Vector2>();
         ResetGeneration();
         
