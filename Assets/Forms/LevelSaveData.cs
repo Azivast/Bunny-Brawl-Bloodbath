@@ -39,6 +39,7 @@ public class LevelSaveData: MonoBehaviour
     private void Start()
     {
         _data.timeStart = Time.time;
+        Debug.Log(Application.persistentDataPath);
     }
 
     private void OnDestroy()
