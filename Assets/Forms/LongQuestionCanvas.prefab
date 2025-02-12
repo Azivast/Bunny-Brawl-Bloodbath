@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 1010722648161992134}
   - component: {fileID: 6789779102679721093}
   m_Layer: 5
-  m_Name: QuestionCanvas
+  m_Name: LongQuestionCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1662,13 +1662,159 @@ MonoBehaviour:
     AnswerText: 
     PreviousButton: 1
     buttonSelected: {fileID: 0}
-  - QuestionText: THis is a question
+  - QuestionText: It was easy to know how to perform actions in the game
     CanBeAnswered: 1
     AnswerText: 
     PreviousButton: 1
     buttonSelected: {fileID: 0}
-  - QuestionText: THis is another question
+  - QuestionText: The actions to control the game were clear to me
     CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I thought the game was easy to control
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I grasped the overall goal of the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The goals of the game were clear to me
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I understood the objectives of the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The game was not too easy and not too hard to play
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The game was challenging but not too challenging
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The challenges in the game were at the right level of difficulty
+      for me
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The game informed me of my progress in the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I could easily assess how I was performing in the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The game gave clear feedback on my progress towards the goals
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I enjoyed the way the game was styled
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I liked the look and feel of the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I appreciated the aesthetics of the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: Playing the game was meaningful to me
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: The game felt relevant to me
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: Playing this game was valuable to me
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I wanted to explore how the game evolved
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I wanted to find out how the game progressed
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt eager to discover how the game continued
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt I was good at playing this game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt capable while playing the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt a sense of mastery playing this game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I was no longer aware of my surroundings while I was playing
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I was immersed in the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I was fully focused on the game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt free to play the game in my own way
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt like I had choices regarding how I wanted to play this game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: I felt a sense of freedom about how I wanted to play this game
+    CanBeAnswered: 1
+    AnswerText: 
+    PreviousButton: 1
+    buttonSelected: {fileID: 0}
+  - QuestionText: This is a finishing prompt
+    CanBeAnswered: 0
     AnswerText: 
     PreviousButton: 1
     buttonSelected: {fileID: 0}
@@ -1676,6 +1822,7 @@ MonoBehaviour:
   Answers: {fileID: 3465693584179146967}
   NextButton: {fileID: 1421559256136142310}
   PreviousButton: {fileID: 6331193202376323523}
+  randomOrder: 1
 --- !u!1 &4697934669407264661
 GameObject:
   m_ObjectHideFlags: 0

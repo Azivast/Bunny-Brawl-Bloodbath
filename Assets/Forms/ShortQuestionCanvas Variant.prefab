@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &9036859333973384863
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4638766431209325272, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_Name
+      value: ShortQuestionCanvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[0].QuestionText
+      value: This is a prompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[1].QuestionText
+      value: The game was not too easy and not too hard to play
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[2].QuestionText
+      value: The game was challenging but not too challenging
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[3].QuestionText
+      value: The challenges in the game were at the right level of difficulty for
+        me
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[4].QuestionText
+      value: I felt I was good at playing this game
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[5].QuestionText
+      value: I felt capable while playing the game
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[6].QuestionText
+      value: I felt a sense of mastery playing this game
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[7].QuestionText
+      value: I was no longer aware of my surroundings while I was playing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[8].QuestionText
+      value: I was immersed in the game
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[9].QuestionText
+      value: I was fully focused on the game
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[10].QuestionText
+      value: This is a finishing prompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[1].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[2].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[3].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[4].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[5].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[6].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[7].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[8].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[9].CanBeAnswered
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[0].PreviousButton
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[10].CanBeAnswered
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[1].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[2].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[3].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[4].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[5].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[6].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[7].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[8].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[9].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789779102679721093, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: questionsAndPrompts.Array.data[10].PreviousButton
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553130315666726026, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca56b8680a9d32c4385faf78f0ae7071, type: 3}
